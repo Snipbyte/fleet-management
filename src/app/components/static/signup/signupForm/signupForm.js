@@ -1,0 +1,55 @@
+"use client"
+import ButtonsSection from '@/app/components/common/buttonSection/buttonsSection';
+import Input from '@/app/components/common/input/input';
+import React, { useState } from 'react'
+import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
+import { FiEye } from 'react-icons/fi';
+
+export default function SignupForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  return (
+   <div className="min-h-screen flex items-center justify-center bg-white px-4 py-12">
+      <div className="w-full max-w-md space-y-6">
+        <div className='flex flex-col items-center justify-center lg:mb-16'>
+          <h1 className='text-[44px]'>Sign In</h1>
+          <p className='text-[#626262]'>Access your bookings, trip history, and account settings.</p>
+        </div>
+          {/* Form */}
+        <form className="space-y-4">
+          <Input label="Username" type="text" />
+          <Input label="Email" type="email" />
+          <Input label="Password" type={!showPassword ? "password" : "text"} icon={<img src={showPassword ? '/png/eye-open.png':'/png/eye-close.png'} className='w-5' onClick={()=> setShowPassword(!showPassword)} />} />
+          <Input label="Confirm Password" type={!showConfirmPassword ? "password" : "text"} icon={<img src={showConfirmPassword ? '/png/eye-open.png' : '/png/eye-close.png'} className='w-5' onClick={()=> setShowConfirmPassword(!showConfirmPassword)} />} />
+          <Input label="Phone Number" type="tel" />
+          {/* Terms */}
+           <div className="flex items-start space-x-2">
+             <input
+               type="checkbox"
+               id="terms"
+               className="mt-1"
+               required
+             />
+             <label htmlFor="terms" className="text-sm text-gray-600">
+               By checking this box, I confirm my information is accurate and
+               agree to the Terms & Conditions.
+             </label>
+           </div>
+           {/* Submit */}
+           <button
+             type="submit"
+             className="w-full bg-black text-white py-3 rounded-md font-medium hover:bg-gray-800"
+           >
+             Create Account ↗
+           </button>
+           </form>
+   
+        {/* OR Divider */}
+        <ButtonsSection className=""  />
+        <div className='text-center'>
+          <p>Already a member? <a href='/'>Login here</a></p>
+        </div>
+         </div>
+       </div>
+  )
+}
