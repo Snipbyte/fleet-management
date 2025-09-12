@@ -1,12 +1,19 @@
 "use client";
 import { useState } from "react";
 
-export default function Input({ label, type = "text", icon, ...props }) {
+export default function Input({ 
+  label, 
+  type = "text", 
+  icon, 
+  error, // 🔹 New prop for error
+  required = false,
+  ...props 
+}) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState("");
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full mb-6">
       {/* Input */}
       <input
         type={type}
@@ -17,14 +24,14 @@ export default function Input({ label, type = "text", icon, ...props }) {
         className={`
           peer w-full border rounded-[10px] px-4 py-2.5
           transition-all duration-200 outline-none bg-[#F6F6F6]
-          ${focused
-            ? "border-[#181A1F] border bg-transparent"
+          ${focused 
+            ? "border-[#181A1F] border bg-transparent" 
             : "border-[#F6F6F6] focus:ring-0"}
         `}
         {...props}
       />
 
-      {/* Floating Label (Left-aligned) */}
+      {/* Floating Label */}
       <label
         className={`
           absolute left-4 pointer-events-none
@@ -34,7 +41,7 @@ export default function Input({ label, type = "text", icon, ...props }) {
             : "text-[#181A1F] top-3"}
         `}
       >
-        {label}<span className="text-red-600"> *</span>
+        {label}{required && <span className="text-red-600"> *</span>}
       </label>
 
       {/* Right Icon */}
@@ -47,10 +54,19 @@ export default function Input({ label, type = "text", icon, ...props }) {
           {icon}
         </span>
       )}
+
+      {/* Error message */}
+      {error && (
+        <div className="flex items-center gap-1 mt-1">
+          <img src="/png/ibutton.png" className="w-4 "/>
+          <p className="text-red-500 text-xs">
+            {error}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
-
 
 
 // "use client";
