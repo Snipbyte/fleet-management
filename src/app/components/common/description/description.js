@@ -6,11 +6,10 @@ export default function DescriptionField({
   required = false,
   error,
   rows = 4,
+  value,
   ...props
 }) {
   const [focused, setFocused] = useState(false);
-  const [value, setValue] = useState("");
-
   return (
     <div className="relative w-full mb-6">
       {/* Textarea */}

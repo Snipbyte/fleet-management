@@ -1,13 +1,11 @@
 "use client"
 import Input from '@/app/components/common/input/input';
 import React, { } from 'react'
-import Header from '../../common/header/header';
-import Footer from '../../common/footer/footer';
 
 export default function ResetPasswordMainPage() {
   return (
     <>
-      <Header />
+
       <div className="min-h-[70vh] flex items-center justify-center bg-white px-4">
         <div className="w-full max-w-md space-y-6">
           <div className='flex flex-col items-center justify-center'>
@@ -26,7 +24,6 @@ export default function ResetPasswordMainPage() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

@@ -27,7 +27,7 @@ export default function VerifyOtpMainPage() {
 
   return (
     <>
-      <Header />
+
       <div className="min-h-[70vh] flex items-center justify-center bg-white px-4">
         <div className="w-full max-w-md space-y-6">
           {/* Heading */}
@@ -72,7 +72,6 @@ export default function VerifyOtpMainPage() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
