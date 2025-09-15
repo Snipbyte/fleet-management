@@ -64,18 +64,18 @@ export default function RideBookingMainPage() {
       {/* toggle button */}
       <div className="max-w-[760px] w-full mt-10">
         <h1 className="font-medium mb-4">Ride Type</h1>
-          <ToggleButton 
-            options={flightOptions} 
-            onToggle={handleFlightToggle}
-            defaultSelected={0}
-          />
-          <div className="w-full flex items-center justify-between my-2">
-            <h1 className="font-medium">Trip Type</h1>
-            <div className="flex items-center gap-2 py-5">
-              <p>{enabled ? "One-Way": "Round-Trip"}</p>
-              <IOSSwitch checked={enabled} onChange={setEnabled} />
-            </div>
+        <ToggleButton
+          options={flightOptions}
+          onToggle={handleFlightToggle}
+          defaultSelected={0}
+        />
+        <div className="w-full flex items-center justify-between my-2">
+          <h1 className="font-medium">Trip Type</h1>
+          <div className="flex items-center gap-2 py-5">
+            <p>{enabled ? "One-Way" : "Round-Trip"}</p>
+            <IOSSwitch checked={enabled} onChange={setEnabled} />
           </div>
+        </div>
 
         {/* form fields */}
         <form onSubmit={handleSubmit}>
@@ -115,7 +115,7 @@ export default function RideBookingMainPage() {
               required
             />
           </div>
-          {enabled &&
+          {!enabled &&
             <div className="flex items-center justify-between gap-4">
               <Input
                 label="Return date"
@@ -138,11 +138,11 @@ export default function RideBookingMainPage() {
           <Input
             label="Fligt number"
             type="number"
-              value={formData.dropoff}
-              onChange={(e) => handleChange("dropoff", e.target.value)}
-              error={errors.dropoff}
-              required
-            />
+            value={formData.dropoff}
+            onChange={(e) => handleChange("dropoff", e.target.value)}
+            error={errors.dropoff}
+            required
+          />
 
           <DescriptionField
             label="Write your description"
