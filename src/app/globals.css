@@ -2,16 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* Hide default placeholder text for date/time inputs */
-input[type="date"]::-webkit-datetime-edit,
-input[type="time"]::-webkit-datetime-edit,
-input[type="datetime-local"]::-webkit-datetime-edit {
-  color: transparent; /* Hide the placeholder text */
-}
-
-input[type="date"]:focus::-webkit-datetime-edit,
-input[type="time"]:focus::-webkit-datetime-edit,
-input[type="datetime-local"]:focus::-webkit-datetime-edit {
-  color: inherit; /* Show the typed/selected value */
-}

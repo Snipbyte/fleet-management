@@ -3,10 +3,18 @@ import React, { useState, useEffect } from "react";
 import Header from "../../common/header/header";
 import OtpInput from "../../common/otpInput/otpInput";
 import Footer from "../../common/footer/footer";
+import { useRouter } from "next/navigation";
 
 export default function VerifyOtpMainPage() {
   const [timeLeft, setTimeLeft] = useState(60);
   const [canResend, setCanResend] = useState(false);
+  const router = useRouter()
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    router.push("/ride-booking");
+  }
+
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -40,7 +48,7 @@ export default function VerifyOtpMainPage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-4">
+          <form onSubmit={onSubmit} className="space-y-4">
             <OtpInput />
 
             {/* Resend + Timer */}

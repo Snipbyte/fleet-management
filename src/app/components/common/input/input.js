@@ -7,11 +7,13 @@ export default function Input({
   icon,
   error,
   required = false,
-  value, // ✅ Controlled from parent
+  value,
   onChange,
   ...props
 }) {
   const [focused, setFocused] = useState(false);
+
+  const isDateOrTime = type === "date" || type === "time";
 
   return (
     <div className="relative w-full mb-6">
@@ -21,16 +23,20 @@ export default function Input({
         onChange={onChange}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
+        placeholder=" " // trick to stop default placeholder
         className={`
           peer w-full border rounded-[10px] px-4 py-2.5
           transition-all duration-200 outline-none bg-[#F6F6F6]
           ${focused || value
-            ? "border-[#181A1F] border bg-transparent"
+            ? "border-[#181A1F] bg-transparent"
             : "border-[#F6F6F6] focus:ring-0"}
+          ${isDateOrTime ? "appearance-none" : ""}
+          ${!value && isDateOrTime ? "text-transparent" : "text-black"}
         `}
         {...props}
       />
 
+      {/* Always visible label */}
       <label
         className={`
           absolute left-4 pointer-events-none
@@ -40,18 +46,22 @@ export default function Input({
             : "text-[#181A1F] top-3"}
         `}
       >
-        {label} <span className="text-red-600"> *</span>
+        {label} {required && <span className="text-red-600">*</span>}
       </label>
 
+      {/* Optional right icon */}
       {icon && (
         <span
-          className={`absolute right-3 top-3.5 cursor-pointer transition-colors duration-200 ${focused ? "text-black" : "text-gray-500"
-            }`}
+          className={`
+            absolute right-3 top-3.5 cursor-pointer transition-colors duration-200
+            ${focused ? "text-black" : "text-gray-500"}
+          `}
         >
           {icon}
         </span>
       )}
 
+      {/* Error message */}
       {error && (
         <div className="flex items-center gap-1 mt-1">
           <img src="/png/ibutton.png" className="w-4" />
@@ -61,7 +71,6 @@ export default function Input({
     </div>
   );
 }
-
 
 
 // "use client";

@@ -1,8 +1,15 @@
 "use client"
 import Input from '@/app/components/common/input/input';
+import { useRouter } from 'next/navigation';
 import React, { } from 'react'
 
 export default function ResetPasswordMainPage() {
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // stop page reload
+    router.push("/verify-otp"); // navigate to verify-otp page
+  };
   return (
     <>
 
@@ -13,7 +20,7 @@ export default function ResetPasswordMainPage() {
             <p className='text-[#626262] text-center mt-3'>Enter your registered email address, and we’ll send you a link to reset your password.</p>
           </div>
           {/* Form */}
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <Input label="Email" type="email" />
             <button
               type="submit"
