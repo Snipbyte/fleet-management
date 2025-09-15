@@ -87,12 +87,21 @@ const Stepper = () => {
                     className={`w-12 h-12 flex items-center justify-center rounded-full transition 
                       ${isActive ? "bg-black" : "bg-[#F0FBF7]"}`}
                   >
-                    <img
+                    {/* <img
                       src={step.icon}
                       alt={step.title}
                       className={`w-5 h-5 object-contain transition ${isActive && currentStep === 1 ? "filter invert" : ""
                         }`}
+                    /> */}
+                    <img
+                      src={step.icon}
+                      alt={step.title}
+                      className={`w-5 h-5 object-contain transition 
+    ${index !== 0 && isActive ? "filter invert" : ""}`}
                     />
+
+
+
                   </div>
                   <div className="w-[80%] flex flex-row items-center justify-between">
                     <h1
