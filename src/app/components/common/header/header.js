@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="w-full bg-black text-white sticky top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        
+
         {/* Logo */}
         <div className="flex items-center">
           <img src="/png/logo.png" className="w-1/2" />
@@ -57,12 +57,16 @@ export default function Header() {
             <img src="/png/world.png" className="w-4" />
             <span className="text-sm">EN</span>
           </div>
-          <button className="px-4 py-1.5 bg-[#626262] rounded-full">
-            Log In
-          </button>
-          <button className="px-4 py-1.5 rounded-full bg-white text-black hover:bg-gray-200">
-            Sign Up
-          </button>
+          <Link href={"/sign-in"}>
+            <button className="px-4 py-1.5 bg-[#626262] rounded-full">
+              Log In
+            </button>
+          </Link>
+          <Link href={"/sign-up"}>
+            <button className="px-4 py-1.5 rounded-full bg-white text-black hover:bg-gray-200">
+              Sign Up
+            </button>
+          </Link>
           <Link href={"/"}>
             <img src="/png/menu.png" className="w-4" />
           </Link>
