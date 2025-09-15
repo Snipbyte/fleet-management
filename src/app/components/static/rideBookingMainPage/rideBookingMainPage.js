@@ -4,9 +4,11 @@ import IOSSwitch from "../../common/iosSwitch/iosSwitch";
 import Input from "../../common/input/input";
 import DescriptionField from "../../common/description/description";
 import ToggleButton from "../../common/toggleButton/toggleButton";
+import { useRouter } from "next/navigation";
 
 export default function RideBookingMainPage() {
   const [enabled, setEnabled] = useState(false);
+  const router = useRouter();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -41,6 +43,8 @@ export default function RideBookingMainPage() {
 
     if (Object.keys(newErrors).length === 0) {
       console.log("form submitted:", formData);
+      // navigate to verify-otp page
+      router.push("/vehicle-selection");
     }
   };
 
