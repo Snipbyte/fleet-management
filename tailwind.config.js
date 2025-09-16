@@ -17,6 +17,8 @@ module.exports = {
 
         // Inputs
         inputBg: "#F6F6F6",
+        borderColor: "#E5E5E5",
+        lightBorder: "#E5E5E5",
 
         // Statuses
         paidStatus: "#E8FFF3",
@@ -24,6 +26,7 @@ module.exports = {
         pendingStatus: "#F7F3FF",
         rejectedStatus: "#FFE2E5",
         approvedStatus: "#007AFF1A",
+        activeBeige: "#FFFCF7"
       },
       animation: {
         marqueeXtoY: "scrollXtoY 10s linear infinite",
