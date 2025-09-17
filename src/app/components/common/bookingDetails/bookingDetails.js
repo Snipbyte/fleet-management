@@ -1,5 +1,5 @@
 "use client";
-import { getStatusColor } from "@/utils/services";
+import { getStatusColor } from "../../../../utils/services";
 import Image from "next/image";
 
 export default function BookingDetail({ row, onClose }) {

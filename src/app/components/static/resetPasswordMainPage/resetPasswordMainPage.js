@@ -1,7 +1,7 @@
 "use client"
-import Input from '@/app/components/common/input/input';
 import { useRouter } from 'next/navigation';
 import React, { } from 'react'
+import Input from '../../common/input/input';
 
 export default function ResetPasswordMainPage() {
   const router = useRouter();

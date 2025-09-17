@@ -1,5 +1,5 @@
 import React from 'react'
-import ReservationMainPage from '@/app/components/static/reservationMainPage/reservationMainPage'
+import ReservationMainPage from '../../components/static/reservationMainPage/reservationMainPage'
 
 export default function page() {
   return (
