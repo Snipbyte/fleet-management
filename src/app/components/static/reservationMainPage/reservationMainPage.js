@@ -4,7 +4,7 @@ import FilterBar from '../../common/filterbar/filterbar'
 import Table from '../../common/table/table'
 import { FaPlus } from 'react-icons/fa';
 import BookingDetail from '../../common/bookingDetails/bookingDetails';
-import { getStatusColor } from '@/utils/services';
+import { getStatusColor } from '../../../../utils/services';
 import CustomModal from '../../common/modal/modal';
 import Link from 'next/link';
 
