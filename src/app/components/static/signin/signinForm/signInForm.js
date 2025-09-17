@@ -1,7 +1,7 @@
 "use client"
-import ButtonsSection from '@/app/components/common/buttonSection/buttonsSection';
-import Checkbox from '@/app/components/common/checkbox/checkbox';
-import Input from '@/app/components/common/input/input';
+import ButtonsSection from '../../../common/buttonSection/buttonsSection';
+import Checkbox from '../../../common/checkbox/checkbox';
+import Input from '../../../common/input/input';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'

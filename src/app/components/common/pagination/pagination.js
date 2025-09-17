@@ -17,7 +17,7 @@ const Pagination = ({ pageCount, onPageChange }) => {
           key={i}
           className={`px-3 py-2 mx-1 text-sm font-medium border border-slateColor rounded-lg cursor-pointer ${
             currentPage === i
-              ? "bg-blueColor text-white"
+              ? "bg-btnBg text-white"
               : "bg-whiteColor text-darkCard hover:bg-lightCard"
           }`}
           onClick={() => handlePageClick(i)}
@@ -32,14 +32,14 @@ const Pagination = ({ pageCount, onPageChange }) => {
   return (
     <ul className="flex items-center justify-center my-4">
       <li
-        className="px-3 py-2 mx-1 text-sm font-medium text-darkCard bg-white border border-slateColor rounded-lg cursor-pointer hover:bg-lightCard"
+        className="px-3 py-2 mx-1 text-sm font-medium text-darkCard bg-white border border-slateColor rounded-lg cursor-pointer hover:bg-gray-100"
         onClick={() => handlePageClick(0)}
       >
         Previous
       </li>
       {renderPageNumbers()}
       <li
-        className="px-3 py-2 mx-1 text-sm font-medium text-darkCard bg-white border border-slateColor rounded-lg cursor-pointer hover:bg-lightCard"
+        className="px-3 py-2 mx-1 text-sm font-medium text-darkCard bg-white border border-slateColor rounded-lg cursor-pointer hover:bg-gray-100"
         onClick={() => handlePageClick(pageCount - 1)}
       >
         Next
