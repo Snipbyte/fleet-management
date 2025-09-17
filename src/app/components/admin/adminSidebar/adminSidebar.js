@@ -8,7 +8,7 @@ import {
   FiLogOut,
   FiChevronRight,
 } from "react-icons/fi";
-import { TbCalendarCheck } from "react-icons/tb";
+import { TbCalendarCheck, TbLayout2 } from "react-icons/tb";
 import { RiTeamLine } from "react-icons/ri";
 import Images from "../../common/Image/Image";
 import { AiOutlineProduct } from "react-icons/ai";
@@ -18,7 +18,7 @@ const sidebarItems = [
   {
     name: "Dashboard",
     href: "/admin/dashboard",
-    icon: TbCalendarCheck,
+    icon: TbLayout2,
   },
   {
     name: "Reservation",
@@ -128,7 +128,7 @@ export default function AdminSidebar() {
                     <Link
                       href={item.href}
                       className={`flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${isActive
-                        ? "bg-white text-desColor font-medium shadow-sm"
+                        ? "bg-white text-black font-medium shadow-sm"
                         : "text-white hover:bg-white/30 hover:text-white"
                         }`}
                       onClick={() => isMobile && setIsOpen(false)}
