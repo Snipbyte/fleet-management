@@ -11,16 +11,22 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
       },
       colors: {
-        darkCard: "#1e293b", //slate-800
-        lightCard: "#f3f4f6", //gray-100
-        headingColor: "#0f172a", //slate-900
-        slateColor: "#cbd5e1", //slate-300
-        desColor: "#0f172a", //slate-900
-        paraColor: "#9ca3af", //gray-400
-        btnColor: "#0f172a", //slate-900
-        blueColor: "#4f46e5", // blue-600
-        hoverBtnColor: "#1e293b", //slate-800
-        themeColor: "#020617", //slate-950
+        // Buttons
+        btnBg: "#000000", // default button background
+        btnHover: "#CDAA74", // hover
+
+        // Inputs
+        inputBg: "#F6F6F6",
+        borderColor: "#E5E5E5",
+        lightBorder: "#E5E5E5",
+
+        // Statuses
+        paidStatus: "#E8FFF3",
+        inProgressStatus: "#FFF4DE",
+        pendingStatus: "#F7F3FF",
+        rejectedStatus: "#FFE2E5",
+        approvedStatus: "#007AFF1A",
+        activeBeige: "#FFFCF7"
       },
       animation: {
         marqueeXtoY: "scrollXtoY 10s linear infinite",
