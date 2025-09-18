@@ -7,24 +7,28 @@ import {
   FiChevronRight,
 } from "react-icons/fi";
 import { TbLayout2 } from "react-icons/tb";
-import { RiTeamLine } from "react-icons/ri";
 import Images from "../../common/Image/Image";
-import { AiOutlineProduct } from "react-icons/ai";
-import { MdOutlineCategory, MdOutlineSettingsSuggest } from "react-icons/md";
+import { AiOutlineDollarCircle } from "react-icons/ai";
+import { BsCardChecklist } from "react-icons/bs";
+import { MdOutlineSettingsSuggest, MdPayment } from "react-icons/md";
+import { IoLocationOutline, IoLogOutOutline } from "react-icons/io5";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { LuUsersRound } from "react-icons/lu";
+import { BiUserPin } from "react-icons/bi";
 import { useState } from "react";
 import LogoutModal from "../../../components/admin/LogoutModal/LogoutModal";
 
 const sidebarItems = [
   { name: "Dashboard", href: "/admin/dashboard", icon: TbLayout2 },
-  { name: "Reservation", href: "/admin/reservation", icon: MdOutlineCategory },
-  { name: "Trips", href: "/admin/trips", icon: MdOutlineCategory },
-  { name: "Drivers", href: "/admin/drivers", icon: RiTeamLine },
-  { name: "Customers", href: "/admin/customers", icon: MdOutlineCategory },
-  { name: "Payment", href: "/admin/payment", icon: AiOutlineProduct },
-  { name: "Payroll", href: "/admin/payroll", icon: MdOutlineSettingsSuggest },
-  { name: "Send Notification", href: "/admin/notification", icon: MdOutlineSettingsSuggest },
-  { name: "Account Settings", href: "/admin/settings", icon: MdOutlineSettingsSuggest },
-  { name: "Logout", href: "#", icon: MdOutlineSettingsSuggest }, 
+  { name: "Reservation", href: "/admin/reservation", icon: BsCardChecklist },
+  { name: "Trips", href: "/admin/trips", icon: IoLocationOutline },
+  { name: "Drivers", href: "/admin/drivers", icon: BiUserPin },
+  { name: "Customers", href: "/admin/customers", icon: LuUsersRound },
+  { name: "Payment", href: "/admin/payment", icon: MdPayment },
+  { name: "Payroll", href: "/admin/payroll", icon: AiOutlineDollarCircle },
+  { name: "Send Notification", href: "/admin/notification", icon: IoIosNotificationsOutline },
+  { name: "Account Settings", href: "/admin/settings", icon: IoLogOutOutline },
+  { name: "Logout", href: "#", icon: MdOutlineSettingsSuggest },
 ];
 
 export default function AdminSidebar() {
@@ -59,7 +63,7 @@ export default function AdminSidebar() {
         <div className="flex flex-col h-full">
           {/* Sidebar Header */}
           <div className="flex items-center justify-between px-6 sticky top-0 z-10 bg-black py-4">
-            <Images src="/png/logo.png" className="w-full" />
+            <Images src="/images/png/logo.png" className="w-full" />
             {isMobile && (
               <button
                 onClick={() => setIsOpen(false)}

@@ -49,7 +49,7 @@ export default function RideSummary() {
         <div className="relative mb-6">
           <div className="flex items-center mb-4 relative gap-2">
             <div
-              className="w-10 h-10 rounded-full bg-[url('/png/a.png')] bg-cover bg-center flex items-center justify-center z-10"
+              className="w-10 h-10 rounded-full bg-[url('/images/png/a.png')] bg-cover bg-center flex items-center justify-center z-10"
             >
               <p className="text-white text-base relative bottom-0.5">A</p>
             </div>
@@ -58,11 +58,11 @@ export default function RideSummary() {
           <div
             className="w-10 flex items-center justify-center mb-4"
           >
-            <img src='/png/lines.png' className='h-16 object-contain' />
+            <img src='/images/png/lines.png' className='h-16 object-contain' />
           </div>
           <div className="flex items-center gap-2 mb-6 relative">
             <div
-              className="w-10 h-10 rounded-full bg-[url('/png/a.png')] bg-cover bg-center flex items-center justify-center z-10"
+              className="w-10 h-10 rounded-full bg-[url('/images/png/a.png')] bg-cover bg-center flex items-center justify-center z-10"
             >
               <p className="text-white text-base relative bottom-0.5">B</p>
             </div>
@@ -71,18 +71,18 @@ export default function RideSummary() {
 
           <div className="flex items-center gap-2 mb-6 relative">
             <div
-              className="w-10 h-10 rounded-full bg-[url('/png/b.png')] bg-cover bg-center flex items-center justify-center z-10"
+              className="w-10 h-10 rounded-full bg-[url('/images/png/b.png')] bg-cover bg-center flex items-center justify-center z-10"
             >
-              <img src='/png/clock-white.png' className='w-5 h-5' />
+              <img src='/images/png/clock-white.png' className='w-5 h-5' />
             </div>
             <h3 className="text-sm text-gray-900">{rideData.from.name}</h3>
           </div>
 
           <div className="flex items-center gap-2 mb-6 relative">
             <div
-              className="w-10 h-10 rounded-full bg-[url('/png/b.png')] bg-cover bg-center flex items-center justify-center z-10"
+              className="w-10 h-10 rounded-full bg-[url('/images/png/b.png')] bg-cover bg-center flex items-center justify-center z-10"
             >
-              <img src='/png/cal-white.png' className='w-5 h-5' />
+              <img src='/images/png/cal-white.png' className='w-5 h-5' />
             </div>
             <h3 className="text-gray-900 text-sm">{"Thu, Oct 06, 2022"}</h3>
           </div>
@@ -90,7 +90,7 @@ export default function RideSummary() {
         {/* Map Preview */}
         <div className="rounded-xl overflow-hidden mb-6 border border-gray-200">
           <img
-            src={"/png/map.png"}
+            src={"/images/png/map.png"}
             alt="Route map"
             className="w-full h-48 object-cover"
           />

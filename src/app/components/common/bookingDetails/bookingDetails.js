@@ -16,7 +16,7 @@ export default function BookingDetail({ row, onClose }) {
           </h3>
           <div className="flex items-center gap-3 mb-2">
             <Image
-              src="/jpg/image.png"
+              src="/images/jpg/image.png"
               alt="customer"
               width={60}
               height={60}
@@ -49,7 +49,7 @@ export default function BookingDetail({ row, onClose }) {
           </h3>
           <div className="flex items-center gap-3 mb-2">
             <Image
-              src="/jpg/image.png"
+              src="/images/jpg/image.png"
               alt="customer"
               width={60}
               height={60}

@@ -22,7 +22,7 @@ export default function Header() {
 
         {/* Logo */}
         <div className="flex items-center">
-          <img src="/png/logo.png" className="w-1/2" />
+          <img src="/images/png/logo.png" className="w-1/2" />
         </div>
 
         {/* Desktop Nav */}
@@ -54,7 +54,7 @@ export default function Header() {
             <FiPhone /> +41 22 716 9000
           </div>
           <div className="flex items-center gap-1">
-            <img src="/png/world.png" className="w-4" />
+            <img src="/images/png/world.png" className="w-4" />
             <span className="text-sm">EN</span>
           </div>
           <Link href={"/sign-in"}>
@@ -68,7 +68,7 @@ export default function Header() {
             </button>
           </Link>
           <Link href={"/"}>
-            <img src="/png/menu.png" className="w-4" />
+            <img src="/images/png/menu.png" className="w-4" />
           </Link>
         </div>
 

@@ -21,8 +21,8 @@ export default function SignupForm() {
         <form className="space-y-4">
           <Input label="Username" type="text" />
           <Input label="Email" type="email" />
-          <Input label="Password" type={!showPassword ? "password" : "text"} icon={<img src={showPassword ? '/png/eye-open.png' : '/png/eye-close.png'} className='w-5' onClick={() => setShowPassword(!showPassword)} />} />
-          <Input label="Confirm Password" type={!showConfirmPassword ? "password" : "text"} icon={<img src={showConfirmPassword ? '/png/eye-open.png' : '/png/eye-close.png'} className='w-5' onClick={() => setShowConfirmPassword(!showConfirmPassword)} />} />
+          <Input label="Password" type={!showPassword ? "password" : "text"} icon={<img src={showPassword ? '/images/png/eye-open.png' : '/images/png/eye-close.png'} className='w-5' onClick={() => setShowPassword(!showPassword)} />} />
+          <Input label="Confirm Password" type={!showConfirmPassword ? "password" : "text"} icon={<img src={showConfirmPassword ? '/images/png/eye-open.png' : '/images/png/eye-close.png'} className='w-5' onClick={() => setShowConfirmPassword(!showConfirmPassword)} />} />
           <Input label="Phone Number" type="tel" />
           {/* Terms */}
           <div className="flex items-start space-x-2">
