@@ -248,7 +248,7 @@ export default function ReservationMainPage() {
     {
       key: "customerName", header: "Customer Name", render: (row) => (
         <div className='flex items-center gap-2'>
-          <img src='/jpg/image.png' className='w-8 h-8' />
+          <img src='/images/jpg/image.png' className='w-8 h-8' />
           <p className="">{row.customerName}</p>
         </div>
       ),
@@ -261,7 +261,7 @@ export default function ReservationMainPage() {
     {
       key: "assignedDriver", header: "Assigned Driver", render: (row) => (
         <div className='flex items-center gap-2'>
-          <img src='/jpg/image.png' className='w-8 h-8' />
+          <img src='/images/jpg/image.png' className='w-8 h-8' />
           <p className="">{row.assignedDriver}</p>
         </div>
       ),
@@ -293,11 +293,11 @@ export default function ReservationMainPage() {
       render: (row) => (
         <div className='flex items-center gap-2'>
           <div onClick={() => setSelectedRow(row)} className="bg-[#007AFF1A] w-6 h-6 rounded-lg flex items-center justify-center cursor-pointer">
-            <img src='/png/eye.png' className='w-4 h-4' />
+            <img src='/images/png/eye.png' className='w-4 h-4' />
           </div>
           <Link href={"/admin/reservation/notifications"}>
             <div className="bg-[#FFCC001A] w-6 h-6 rounded-lg flex items-center justify-center cursor-pointer">
-              <img src='/png/bell.png' className='w-4 h-4' />
+              <img src='/images/png/bell.png' className='w-4 h-4' />
             </div>
           </Link>
         </div>
