@@ -1,78 +1,43 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSidebar } from "../sidebarProvider/sidebarProvider";
 import {
   FiX,
-  FiUsers,
-  FiLogOut,
   FiChevronRight,
 } from "react-icons/fi";
-import { TbCalendarCheck, TbLayout2 } from "react-icons/tb";
+import { TbLayout2 } from "react-icons/tb";
 import { RiTeamLine } from "react-icons/ri";
 import Images from "../../common/Image/Image";
 import { AiOutlineProduct } from "react-icons/ai";
 import { MdOutlineCategory, MdOutlineSettingsSuggest } from "react-icons/md";
+import { useState } from "react";
+import LogoutModal from "../../../components/admin/LogoutModal/LogoutModal";
 
 const sidebarItems = [
-  {
-    name: "Dashboard",
-    href: "/admin/dashboard",
-    icon: TbLayout2,
-  },
-  {
-    name: "Reservation",
-    href: "/admin/reservation",
-    icon: FiUsers,
-  },
-  {
-    name: "Trips",
-    href: "/admin/trips",
-    icon: FiUsers,
-  },
-  {
-    name: "Drivers",
-    href: "/admin/drivers",
-    icon: RiTeamLine,
-  },
-  {
-    name: "Customers",
-    href: "/admin/customers",
-    icon: MdOutlineCategory,
-  },
-  {
-    name: "Payment",
-    href: "/admin/payment",
-    icon: AiOutlineProduct,
-  },
-  {
-    name: "Payroll",
-    href: "/admin/payroll",
-    icon: MdOutlineSettingsSuggest,
-  },
-  {
-    name: "Send Notification",
-    href: "/admin/notification",
-    icon: MdOutlineSettingsSuggest,
-  },
-  {
-    name: "Account SEttings",
-    href: "/admin/settings",
-    icon: MdOutlineSettingsSuggest,
-  },
-  {
-    name: "logout",
-    href: "/sign-up",
-    icon: MdOutlineSettingsSuggest,
-  },
+  { name: "Dashboard", href: "/admin/dashboard", icon: TbLayout2 },
+  { name: "Reservation", href: "/admin/reservation", icon: MdOutlineCategory },
+  { name: "Trips", href: "/admin/trips", icon: MdOutlineCategory },
+  { name: "Drivers", href: "/admin/drivers", icon: RiTeamLine },
+  { name: "Customers", href: "/admin/customers", icon: MdOutlineCategory },
+  { name: "Payment", href: "/admin/payment", icon: AiOutlineProduct },
+  { name: "Payroll", href: "/admin/payroll", icon: MdOutlineSettingsSuggest },
+  { name: "Send Notification", href: "/admin/notification", icon: MdOutlineSettingsSuggest },
+  { name: "Account Settings", href: "/admin/settings", icon: MdOutlineSettingsSuggest },
+  { name: "Logout", href: "#", icon: MdOutlineSettingsSuggest }, 
 ];
 
 export default function AdminSidebar() {
   const { isOpen, setIsOpen, isMobile } = useSidebar();
   const pathname = usePathname();
+  const router = useRouter();
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const handleLogout = () => {
+    setShowLogoutModal(false);
+    localStorage.clear();
+    router.push("/sign-up");
   };
 
   return (
@@ -86,16 +51,6 @@ export default function AdminSidebar() {
         ></div>
       )}
 
-      {/* Mobile Toggle Button */}
-      {/* <button
-        className="md:hidden fixed top-4 left-4 z-30 p-2 rounded-md bg-black text-white shadow-lg hover:bg-gray-800 transition-colors"
-        onClick={toggleSidebar}
-        aria-label={isOpen ? "Close menu" : "Open menu"}
-        aria-expanded={isOpen}
-      >
-        {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-      </button> */}
-
       {/* Sidebar */}
       <aside
         className={`${isOpen ? "translate-x-0" : "-translate-x-full"
@@ -103,7 +58,7 @@ export default function AdminSidebar() {
       >
         <div className="flex flex-col h-full">
           {/* Sidebar Header */}
-          <div className="flex items-center justify-between px-6  sticky top-0 z-10 bg-black py-4">
+          <div className="flex items-center justify-between px-6 sticky top-0 z-10 bg-black py-4">
             <Images src="/png/logo.png" className="w-full" />
             {isMobile && (
               <button
@@ -123,40 +78,52 @@ export default function AdminSidebar() {
                 const isActive =
                   pathname === item.href ||
                   pathname.startsWith(`${item.href}/`);
+
                 return (
                   <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className={`flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${isActive
-                        ? "bg-white text-black font-medium shadow-sm"
-                        : "text-white hover:bg-white/30 hover:text-white"
-                        }`}
-                      onClick={() => isMobile && setIsOpen(false)}
-                    >
-                      <div className="flex items-center">
-                        <item.icon
-                          className={`mr-3 h-5 w-5 ${isActive ? "text-desColor" : "text-white"
-                            }`}
-                        />
-                        <span className="text-sm font-medium">{item.name}</span>
-                      </div>
-                      {isActive && <FiChevronRight className="h-4 w-4" />}
-                    </Link>
+                    {item.name === "Logout" ? (
+                      <button
+                        onClick={() => setShowLogoutModal(true)}
+                        className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-left transition-all duration-200 text-white hover:bg-white/30 hover:text-white"
+                      >
+                        <div className="flex items-center">
+                          <item.icon className="mr-3 h-5 w-5 text-white" />
+                          <span className="text-sm font-medium">{item.name}</span>
+                        </div>
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className={`flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${isActive
+                          ? "bg-white text-black font-medium shadow-sm"
+                          : "text-white hover:bg-white/30 hover:text-white"
+                          }`}
+                        onClick={() => isMobile && setIsOpen(false)}
+                      >
+                        <div className="flex items-center">
+                          <item.icon
+                            className={`mr-3 h-5 w-5 ${isActive ? "text-desColor" : "text-white"
+                              }`}
+                          />
+                          <span className="text-sm font-medium">{item.name}</span>
+                        </div>
+                        {isActive && <FiChevronRight className="h-4 w-4" />}
+                      </Link>
+                    )}
                   </li>
                 );
               })}
             </ul>
           </nav>
-
-          {/* Sidebar Footer */}
-          <div className="p-4 border-t border-gray-600">
-            <button className="flex items-center w-full px-4 py-3 text-sm text-white hover:text-white hover:bg-white/30 rounded-lg transition-colors duration-200">
-              <FiLogOut className="mr-3 h-5 w-5 text-white" />
-              <span className="font-medium">Logout</span>
-            </button>
-          </div>
         </div>
       </aside>
+
+      {/* 🔹 Logout Confirmation Modal */}
+      <LogoutModal
+        isOpen={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={handleLogout}
+      />
     </>
   );
 }
