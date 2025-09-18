@@ -86,7 +86,7 @@ const Table = ({
       )} */}
       {/* Table */}
       <div className="overflow-auto">
-        <table className="min-w-full bg-white">
+        {/* <table className="min-w-full bg-white">
           <thead className="bg-inputBg border border-borderColor">
             <tr className="whitespace-nowrap">
               {columns.map((column, index) => (
@@ -104,7 +104,45 @@ const Table = ({
                 className="border-b border-b-borderColor"
               >
                 {columns.map((column, colIndex) => (
-                  <td key={colIndex} className={`px-4 py-5 text-sm  ${colIndex === 3 || colIndex === 2 || colIndex === 7 || colIndex === 10 || colIndex === 11 ? "min-w-[200px]" : ""}`}>
+                  // <td key={colIndex} className={`px-4 py-5 text-sm  ${colIndex === 3 || colIndex === 2 || colIndex === 7 || colIndex === 10 || colIndex === 11 ? "min-w-[200px]" : ""}`}>
+                  //   {column.render ? column.render(row) : row[column.key]}
+                  // </td>
+                  <td
+                    key={colIndex}
+                    className="px-4 py-5 text-sm"
+                  >
+                    {column.render ? column.render(row) : row[column.key]}
+                  </td>
+
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table> */}
+        <table className="min-w-full bg-white table-auto">
+          <thead className="bg-inputBg border border-borderColor">
+            <tr className="whitespace-nowrap">
+              {columns.map((column, index) => (
+                <th
+                  key={index}
+                  className="py-5 px-4 text-left font-medium text-sm whitespace-nowrap"
+                >
+                  {column.header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {currentRows.map((row, rowIndex) => (
+              <tr
+                key={rowIndex}
+                className="border-b border-b-borderColor"
+              >
+                {columns.map((column, colIndex) => (
+                  <td
+                    key={colIndex}
+                    className="px-4 py-5 text-sm whitespace-nowrap"
+                  >
                     {column.render ? column.render(row) : row[column.key]}
                   </td>
                 ))}
@@ -112,6 +150,7 @@ const Table = ({
             ))}
           </tbody>
         </table>
+
       </div>
 
       {/* Pagination */}
