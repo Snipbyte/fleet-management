@@ -201,7 +201,7 @@ export default function TripsMainPage() {
     {
       key: "customerName", header: "Customer Name", render: (row) => (
         <div className='flex items-center gap-2'>
-          <img src='/jpg/image.png' className='w-8 h-8' />
+          <img src='/images/jpg/image.png' className='w-8 h-8' />
           <p>{highlightText(row.customerName, search)}</p>
         </div>
       ),
@@ -243,7 +243,7 @@ export default function TripsMainPage() {
     {
       key: "assignedDriver", header: "Assigned Driver", render: (row) => (
         <div className='flex items-center gap-2'>
-          <img src='/jpg/image.png' className='w-8 h-8' />
+          <img src='/images/jpg/image.png' className='w-8 h-8' />
           <p>{row.assignedDriver}</p>
         </div>
       ),
@@ -257,7 +257,7 @@ export default function TripsMainPage() {
             onClick={() => setSelectedRow(row)}
             className="bg-inputBg px-3 py-2 gap-2 rounded-lg flex items-center justify-center cursor-pointer"
           >
-            <img src='/png/send.png' className='w-4 h-4' />
+            <img src='/images/png/send.png' className='w-4 h-4' />
             <p>
               Notify me
             </p>
@@ -269,7 +269,7 @@ export default function TripsMainPage() {
               setOpenDropdown(openDropdown === row.no ? null : row.no)
             }}
             className="bg-inputBg px-3 py-2.5 rounded-lg flex items-center justify-center cursor-pointer">
-            <img src='/png/ellipsis-horizontal.png' className='w-4 h-4' />
+            <img src='/images/png/ellipsis-horizontal.png' className='w-4 h-4' />
           </div>
           {/* </Link> */}
           {/* Dropdown menu */}
@@ -284,7 +284,7 @@ export default function TripsMainPage() {
                     router.push("/admin/trips/trip-details")
                   }}
                 >
-                  <img src={"/png/eye.png"} className='w-6 object-contain filter invert' />
+                  <img src={"/images/png/eye.png"} className='w-6 object-contain filter invert' />
                   <p>View Details</p>
                 </li>
                 <li
@@ -295,7 +295,7 @@ export default function TripsMainPage() {
 
                   }}
                 >
-                  <img src={"/png/user.png"} className='w-6 object-contain' />
+                  <img src={"/images/png/user.png"} className='w-6 object-contain' />
                   <p>Assign Driver</p>
                 </li>
                 <li
@@ -305,7 +305,7 @@ export default function TripsMainPage() {
                     setOpenDropdown(null);
                   }}
                 >
-                  <img src={"/png/calender.png"} className='w-6 object-contain' />
+                  <img src={"/images/png/calender.png"} className='w-6 object-contain' />
                   <p>Send Invoice</p>
                 </li>
                 <li
@@ -315,7 +315,7 @@ export default function TripsMainPage() {
                     setOpenDropdown(null);
                   }}
                 >
-                  <img src={"/png/bin.png"} className='w-6 object-contain' />
+                  <img src={"/images/png/bin.png"} className='w-6 object-contain' />
                   <p>Cancel Trip </p>
                 </li>
               </ul>

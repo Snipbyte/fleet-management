@@ -6,23 +6,23 @@ export default function VehicleSelectionCard() {
       {/* Left Image Section */}
       <div className="w-full lg:w-[65%] lg:border-r border-r-slate-200 p-4">
         <div className="w-full h-[200px]">
-          <img src="/png/placeholder.png" className="w-full h-full" />
+          <img src="/images/png/placeholder.png" className="w-full h-full" />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-3 mt-4 text-sm text-gray-700 mb-3">
           <div className="flex items-center gap-2">
-            <img src="/png/achivement.png" className="w-6 h-6" />
+            <img src="/images/png/achivement.png" className="w-6 h-6" />
             <p className="text-base">Meet &amp; Greet included</p>
           </div>
           <div className="flex items-center gap-2">
-            <img src="/png/cancel.png" className="w-6 h-6" />
+            <img src="/images/png/cancel.png" className="w-6 h-6" />
             <p className="text-base">Free cancellation</p>
           </div>
           <div className="flex items-center gap-2">
-            <img src="/png/clock.png" className="w-6 h-6" />
+            <img src="/images/png/clock.png" className="w-6 h-6" />
             <p className="text-base">Free Waiting time</p>
           </div>
           <div className="flex items-center gap-2">
-            <img src="/png/safe.png" className="w-6 h-6" />
+            <img src="/images/png/safe.png" className="w-6 h-6" />
             <p className="text-base">Safe and secure travel</p>
           </div>
         </div>
@@ -45,11 +45,11 @@ export default function VehicleSelectionCard() {
         {/* Passengers + Luggage */}
         <div className="flex items-center flex-wrap gap-6 mt-3 text-sm text-gray-700">
           <div className="flex items-center gap-2">
-            <img src="/png/users.png" className="w-6 h-6" />
+            <img src="/images/png/users.png" className="w-6 h-6" />
             <p>Passengers: 4</p>
           </div>
           <div className="flex items-center gap-2">
-            <img src="/png/lagguage.png" className="w-6 h-6" />
+            <img src="/images/png/lagguage.png" className="w-6 h-6" />
             <p>Luggage: 1</p>
           </div>
         </div>

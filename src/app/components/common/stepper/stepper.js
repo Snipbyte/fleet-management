@@ -54,10 +54,10 @@ const Stepper = () => {
   });
 
   const steps = [
-    { id: 1, title: "Vehicle", icon: "/png/car.png" },
-    { id: 2, title: "Extras", icon: "/png/extras.png" },
-    { id: 3, title: "Passenger", icon: "/png/users.png" },
-    { id: 4, title: "Payment", icon: "/png/card.png" },
+    { id: 1, title: "Vehicle", icon: "/images/png/car.png" },
+    { id: 2, title: "Extras", icon: "/images/png/extras.png" },
+    { id: 3, title: "Passenger", icon: "/images/png/users.png" },
+    { id: 4, title: "Payment", icon: "/images/png/card.png" },
   ];
 
   // ✅ handle submit
@@ -215,7 +215,7 @@ const Stepper = () => {
                   <Input type="date" label="Year" {...register("expiryYear")} />
                   <Input type="number" label="CVV" {...register("cvv")} />
                 </div>
-                <img src="/png/payment.png" className="w-full md:w-1/2 mt-4" />
+                <img src="/images/png/payment.png" className="w-full md:w-1/2 mt-4" />
                 <div className="flex flex-col gap-4 mt-6">
                   <p className="text-sm">
                     The credit card must be issued in the driver's name. Debit cards are accepted at some locations.
@@ -259,10 +259,10 @@ export default Stepper;
 //   const [currentStep, setCurrentStep] = useState(0);
 
 //   const steps = [
-//     { id: 1, title: "Vehicle", icon: "/png/car.png" },
-//     { id: 2, title: "Extras", icon: "/png/extras.png" },
-//     { id: 3, title: "Passenger", icon: "/png/users.png" },
-//     { id: 4, title: "Payment", icon: "/png/card.png" },
+//     { id: 1, title: "Vehicle", icon: "/images/png/car.png" },
+//     { id: 2, title: "Extras", icon: "/images/png/extras.png" },
+//     { id: 3, title: "Passenger", icon: "/images/png/users.png" },
+//     { id: 4, title: "Payment", icon: "/images/png/card.png" },
 //   ];
 
 //   return (
@@ -377,7 +377,7 @@ export default Stepper;
 //                   <Input type="date" label="Year" />
 //                   <Input type="number" label="CVV" />
 //                 </div>
-//                 <img src="/png/payment.png" className="w-full md:w-1/2 mt-4" />
+//                 <img src="/images/png/payment.png" className="w-full md:w-1/2 mt-4" />
 //                 <div className="flex flex-col gap-4 mt-6">
 //                   <p className="text-sm">
 //                     The credit card must be issued in the driver's name. Debit cards are accepted at some locations.

@@ -9,7 +9,7 @@ export default function AssignDriverCard() {
     vehicle: "Toyota",
     license: "DL123456",
     status: "Active",
-    avatar: "/jpg/image.png",
+    avatar: "/images/jpg/image.png",
   };
 
   const trip = {
