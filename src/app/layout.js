@@ -22,7 +22,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={`${dmSans.variable} antialiased`}>
         <MainLayout>{children}</MainLayout>
-        
+
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client"
-import ReservationMainPage from "./components/static/reservationMainPage/reservationMainPage";
+import TripDetailsMainPage from "./components/static/tripDetails/tripDetailsMainPage/tripDetailsMainPage"
 
 export default function Home() {
-  return <ReservationMainPage />
+  return <TripDetailsMainPage />
 }

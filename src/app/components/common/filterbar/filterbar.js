@@ -2,8 +2,8 @@
 import { useState, useRef, useEffect } from "react";
 import { FiSearch, FiChevronDown, FiX, FiCalendar, FiCheck, FiTruck, FiClock } from "react-icons/fi";
 
-export default function FilterBar() {
-  const [search, setSearch] = useState("");
+export default function FilterBar({ timeFilters = true, showTimeFilter, statuses, vehicles, search, setSearch, onSearch, showVehicle = true, buttonTitle, onClick, showButton = false }) {
+
   const [timeFilter, setTimeFilter] = useState("Today");
   const [status, setStatus] = useState("All Status");
   const [vehicle, setVehicle] = useState("Vehicle");
@@ -11,9 +11,7 @@ export default function FilterBar() {
   const [isStatusOpen, setIsStatusOpen] = useState(false);
   const [isVehicleOpen, setIsVehicleOpen] = useState(false);
 
-  const timeFilters = ["Today", "Last Week", "Last Month", "Last Year"];
-  const statuses = ["All Status", "Paid", "In Progress", "Pending", "Rejected", "Approved"];
-  const vehicles = ["Vehicle", "Car", "Bike", "Truck", "Bus"];
+
 
   const timeRef = useRef(null);
   const statusRef = useRef(null);
@@ -28,27 +26,6 @@ export default function FilterBar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case "Paid": return "bg-paidStatus text-green-800";
-      case "In Progress": return "bg-inProgressStatus text-yellow-800";
-      case "Pending": return "bg-pendingStatus text-purple-800";
-      case "Rejected": return "bg-rejectedStatus text-red-800";
-      case "Approved": return "bg-approvedStatus text-blue-800";
-      default: return "bg-gray-100 text-gray-600";
-    }
-  };
-
-  const getVehicleIcon = (vehicle) => {
-    switch (vehicle) {
-      case "Car": return "";
-      case "Bike": return "";
-      case "Truck": return "";
-      case "Bus": return "";
-      default: return "";
-    }
-  };
 
   return (
     <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white mb-4">
@@ -72,7 +49,7 @@ export default function FilterBar() {
             </button>
           )}
         </div>
-        <button className="bg-btnBg hover:bg-btnHover text-white px-4 py-3 rounded-lg transition-all">
+        <button onClick={onSearch} className="bg-btnBg hover:bg-btnHover text-white px-4 py-3 rounded-lg transition-all">
           Search
         </button>
       </div>
@@ -80,34 +57,36 @@ export default function FilterBar() {
       {/* Filters Section */}
       <div className="flex w-full md:w-3/5 flex-wrap gap-3 items-center justify-start md:justify-end">
         {/* Time Filter */}
-        <div className="relative" ref={timeRef}>
-          <button
-            onClick={() => setIsTimeOpen(!isTimeOpen)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
-          >
-            <div className="flex items-center gap-2">
-              <span>{timeFilter}</span>
-            </div>
-            <FiChevronDown size={16} className={`text-gray-400 transition-transform ${isTimeOpen ? "rotate-180" : ""}`} />
-          </button>
+        {showTimeFilter &&
+          <div className="relative" ref={timeRef}>
+            <button
+              onClick={() => setIsTimeOpen(!isTimeOpen)}
+              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
+            >
+              <div className="flex items-center gap-2">
+                <span>{timeFilter}</span>
+              </div>
+              <FiChevronDown size={16} className={`text-gray-400 transition-transform ${isTimeOpen ? "rotate-180" : ""}`} />
+            </button>
 
-          {isTimeOpen && (
-            <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
-              {timeFilters.map((item) => (
-                <div
-                  key={item}
-                  onClick={() => {
-                    setTimeFilter(item);
-                    setIsTimeOpen(false);
-                  }}
-                  className={`px-2 mx-2 py-1.5 flex items-center justify-between rounded-md cursor-pointer hover:bg-btnHover hover:text-white transition-colors}`}
-                >
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+            {isTimeOpen && (
+              <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
+                {timeFilters.map((item) => (
+                  <div
+                    key={item}
+                    onClick={() => {
+                      setTimeFilter(item);
+                      setIsTimeOpen(false);
+                    }}
+                    className={`px-2 mx-2 py-1.5 flex items-center justify-between rounded-md cursor-pointer hover:bg-btnHover hover:text-white transition-colors}`}
+                  >
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        }
 
         {/* Status Filter */}
         <div className="relative" ref={statusRef}>
@@ -140,35 +119,46 @@ export default function FilterBar() {
         </div>
 
         {/* Vehicle Filter */}
-        <div className="relative" ref={vehicleRef}>
-          <button
-            onClick={() => setIsVehicleOpen(!isVehicleOpen)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-inputBg rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
-          >
-            <div className="flex items-center gap-2">
-              <span>{vehicle}</span>
-              {vehicle !== "Vehicle" && <span className="ml-1">{getVehicleIcon(vehicle)}</span>}
-            </div>
-            <FiChevronDown size={16} className={`text-gray-400 transition-transform ${isVehicleOpen ? "rotate-180" : ""}`} />
-          </button>
+        {showVehicle &&
+          <div className="relative" ref={vehicleRef}>
+            <button
+              onClick={() => setIsVehicleOpen(!isVehicleOpen)}
+              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
+            >
+              <div className="flex items-center gap-2">
+                <span>{vehicle}</span>
+                {vehicle !== "Vehicle"}
+              </div>
+              <FiChevronDown size={16} className={`text-gray-400 transition-transform ${isVehicleOpen ? "rotate-180" : ""}`} />
+            </button>
 
-          {isVehicleOpen && (
-            <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
-              {vehicles.map((v) => (
-                <div
-                  key={v}
-                  onClick={() => {
-                    setVehicle(v);
-                    setIsVehicleOpen(false);
-                  }}
-                  className={`px-2 mx-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors }`}
-                >
-                  <span>{v}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+            {isVehicleOpen && (
+              <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
+                {vehicles.map((v) => (
+                  <div
+                    key={v}
+                    onClick={() => {
+                      setVehicle(v);
+                      setIsVehicleOpen(false);
+                    }}
+                    className={`px-2 mx-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors }`}
+                  >
+                    <span>{v}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        }
+
+        {showButton &&
+          <button
+            onClick={onClick}
+            className="px-4 bg-black text-white py-2.5 rounded-md font-medium hover:bg-gray-800"
+          >
+            {buttonTitle}
+          </button>
+        }
       </div>
     </div>
   );
@@ -177,4 +167,3 @@ export default function FilterBar() {
 
 
 
-// 0305 2044344
