@@ -8,6 +8,7 @@ import { getStatusColor } from '../../../../../utils/services';
 import CustomModal from '../../../common/modal/modal';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import AdminHeader from '../../../common/adminHeader/adminHeader';
 
 const data = [
   {
@@ -329,7 +330,7 @@ export default function TripsMainPage() {
 
   return (
     <div className='bg-gray-50 px-6 py-4'>
-      <h1>Booking</h1>
+          <AdminHeader title="Trips Management"/>
       <div className='bg-white rounded-lg p-4 mt-2'>
         <FilterBar
           timeFilters={timeFilters}

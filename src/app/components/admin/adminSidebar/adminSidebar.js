@@ -27,7 +27,7 @@ const sidebarItems = [
   { name: "Payment", href: "/admin/payment", icon: MdPayment },
   { name: "Payroll", href: "/admin/payroll", icon: AiOutlineDollarCircle },
   { name: "Send Notification", href: "/admin/notification", icon: IoIosNotificationsOutline },
-  { name: "Account Settings", href: "/admin/settings", icon: IoLogOutOutline },
+  { name: "Account Settings", href: "/admin/profile", icon: IoLogOutOutline },
   { name: "Logout", href: "#", icon: MdOutlineSettingsSuggest },
 ];
 

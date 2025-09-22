@@ -7,6 +7,7 @@ import BookingDetail from '../../common/bookingDetails/bookingDetails';
 import { getStatusColor } from '../../../../utils/services';
 import CustomModal from '../../common/modal/modal';
 import Link from 'next/link';
+import AdminHeader from '../../common/adminHeader/adminHeader';
 
 const data = [
   {
@@ -307,7 +308,7 @@ export default function ReservationMainPage() {
 
   return (
     <div className='bg-gray-50 px-6 py-4'>
-      <h1>Booking</h1>
+      <AdminHeader title="Reservations"/>
       <div className='bg-white rounded-lg p-4 mt-2'>
         <FilterBar showTimeFilter={true} timeFilters={timeFilters} statuses={statuses} vehicles={vehicles} search={search} setSearch={setSearch} onSearch={handleSearch} />
         <Table
