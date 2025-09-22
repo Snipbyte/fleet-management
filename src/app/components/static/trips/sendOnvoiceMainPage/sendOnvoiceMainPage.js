@@ -5,7 +5,7 @@ import AdminHeader from '../../../common/adminHeader/adminHeader'
 export default function SendOnvoiceMainPage() {
   return (
     <div className='p-4'>
-      <AdminHeader showIcon={true} title={"Send Invoice"} />
+      <AdminHeader showButtons={false} showIcon={true} title={"Send Invoice"} />
       <SendInvoice />
     </div>
   )
