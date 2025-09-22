@@ -1,15 +1,15 @@
+
 "use client"
-import React, { useEffect, useState } from 'react'
-import FilterBar from '../../../common/filterbar/filterbar'
-import Table from '../../../common/table/table'
+import React, { useState } from 'react'
+import FilterBar from '../../../../common/filterbar/filterbar';
+import Table from '../../../../common/table/table';
+import CustomModal from '../../../../common/modal/modal';
+import BookingDetail from '../../../../common/bookingDetails/bookingDetails';
 import { FaPlus } from 'react-icons/fa';
-import BookingDetail from '../../../common/bookingDetails/bookingDetails';
-import { getStatusColor } from '../../../../../utils/services';
-import CustomModal from '../../../common/modal/modal';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import DeleteTripModal from "../deleteTripModal/deleteTripModal"
-import AdminHeader from '../../../common/adminHeader/adminHeader';
+import { getStatusColor } from '../../../../../../utils/services';
+import Link from 'next/link';
+import DeleteTripModal from '../../../trips/deleteTripModal/deleteTripModal';
 
 const data = [
   {
@@ -154,10 +154,25 @@ const data = [
   }
 ];
 
-const timeFilters = ["Last 30 Days", "Last 7 Days", "All"];
-const statuses = ["All Status", "Pending", "In Progress", "Success", "Rejected"];
+const timeFilters = [
+  { label: "Today", value: "today" },
+  { label: "This Week", value: "this_week" },
+  { label: "This Month", value: "this_month" },
+];
 
-export default function TripsMainPage() {
+// ✅ Status Filters (updated)
+const statuses = [
+  { label: "All Status", value: "all" },
+  { label: "Completed", value: "completed" },
+  { label: "Pending", value: "pending" },
+  { label: "Approved", value: "approved" },
+  { label: "In Progress", value: "in_progress" },
+  { label: "Success", value: "success" },
+  { label: "Ongoing", value: "ongoing" },
+  { label: "Rejected", value: "rejected" },
+];
+
+export default function RecentTrip() {
   const router = useRouter()
   const [selectedRow, setSelectedRow] = useState(null);
   const [search, setSearch] = useState('');
@@ -189,14 +204,6 @@ export default function TripsMainPage() {
   };
 
 
-  // useEffect(() => {
-  //   const handleClickOutside = () => setOpenDropdown(null);
-  //   window.addEventListener("mousedown", handleClickOutside);
-  //   return () => window.removeEventListener("mousedown", handleClickOutside);
-  // }, []);
-
-
-
   // Define columns
   const columns = [
     { key: "no", header: "No." },
@@ -204,7 +211,7 @@ export default function TripsMainPage() {
     {
       key: "customerName", header: "Customer Name", render: (row) => (
         <div className='flex items-center gap-2'>
-          <img src='/images/jpg/image.png' className='w-8 h-8' />
+          <img src='/jpg/image.png' className='w-8 h-8' />
           <p>{highlightText(row.customerName, search)}</p>
         </div>
       ),
@@ -246,7 +253,7 @@ export default function TripsMainPage() {
     {
       key: "assignedDriver", header: "Assigned Driver", render: (row) => (
         <div className='flex items-center gap-2'>
-          <img src='/images/jpg/image.png' className='w-8 h-8' />
+          <img src='/jpg/image.png' className='w-8 h-8' />
           <p>{row.assignedDriver}</p>
         </div>
       ),
@@ -260,7 +267,7 @@ export default function TripsMainPage() {
             onClick={() => setSelectedRow(row)}
             className="bg-inputBg px-4 py-2 gap-2 rounded-lg flex items-center justify-center cursor-pointer"
           >
-            <img src='/images/png/send.png' className='w-4 h-4' />
+            <img src='/png/send.png' className='w-4 h-4' />
             <p>
               Notify me
             </p>
@@ -287,7 +294,7 @@ export default function TripsMainPage() {
                     router.push("/admin/trips/trip-details")
                   }}
                 >
-                  <img src={"/images/png/eye.png"} className='w-6 object-contain filter invert' />
+                  <img src={"/png/eye.png"} className='w-6 object-contain filter invert' />
                   <p>View Details</p>
                 </li>
                 <Link href={"/admin/trips/assign-driver"}>
@@ -310,7 +317,7 @@ export default function TripsMainPage() {
                     setOpenDropdown(null);
                   }}
                 >
-                  <img src={"/images/png/calender.png"} className='w-6 object-contain' />
+                  <img src={"/png/calender.png"} className='w-6 object-contain' />
                   <p>Send Invoice</p>
                 </li>
                 <li
@@ -321,7 +328,7 @@ export default function TripsMainPage() {
                     setDeleteModalVisible(true)
                   }}
                 >
-                  <img src={"/images/png/bin.png"} className='w-6 object-contain' />
+                  <img src={"/png/bin.png"} className='w-6 object-contain' />
                   <p>Cancel Trip </p>
                 </li>
               </ul>
@@ -334,39 +341,36 @@ export default function TripsMainPage() {
 
 
   return (
-    <div className='bg-gray-50 px-6 py-4'>
-      <AdminHeader title={"Booking"} />
-      <div className='bg-white rounded-lg p-4 mt-2'>
-        <FilterBar
-          timeFilters={timeFilters}
-          statuses={statuses}
-          search={search}
-          setSearch={setSearch}
-          onSearch={handleSearch}
-          showVehicle={false}
-          showTimeFilter={true}
-        />
-        <Table
-          data={filteredData}
-          columns={columns}
-          isRecent={false}
-          isSuperAdmin={true}
-          addBtn="Add Ride"
-          icon={<FaPlus />}
-        // Pass booking detail modal directly
-        />
-        {/* Booking Detail Modal */}
-        <CustomModal
-          isOpen={!!selectedRow}
-          onRequestClose={() => setSelectedRow(null)}
-          title="Booking Detail"
-        >
-          {selectedRow && (
-            <BookingDetail row={selectedRow} onClose={() => setSelectedRow(null)} />
-          )}
+    <div className='p-4 bg-white rounded-xl'>
+      <FilterBar
+        timeFilters={timeFilters}
+        statuses={statuses}
+        search={search}
+        setSearch={setSearch}
+        onSearch={handleSearch}
+        showVehicle={false}
+        showTimeFilter={true}
+      />
+      <Table
+        data={filteredData}
+        columns={columns}
+        isRecent={false}
+        isSuperAdmin={true}
+        addBtn="Add Ride"
+        icon={<FaPlus />}
+      // Pass booking detail modal directly
+      />
+      {/* Booking Detail Modal */}
+      <CustomModal
+        isOpen={!!selectedRow}
+        onRequestClose={() => setSelectedRow(null)}
+        title="Booking Detail"
+      >
+        {selectedRow && (
+          <BookingDetail row={selectedRow} onClose={() => setSelectedRow(null)} />
+        )}
 
-        </CustomModal>
-      </div>
+      </CustomModal>
       {deleteModalVisible && <DeleteTripModal onClose={() => setDeleteModalVisible(false)} />}
     </div>
   )
