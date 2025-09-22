@@ -10,9 +10,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center md:items-center justify-between border-b border-b-[#ffffff20] mb-6 gap-4 md:gap-0">
           {/* Logo + Contact */}
           <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between w-full md:w-2/6 gap-4">
-            <img src="/png/footer-logo.png" className="w-24 sm:w-28" alt="Logo" />
+            <img src="/images/png/footer-logo.png" className="w-24 sm:w-28" alt="Logo" />
             <div className="flex items-center gap-2">
-              <img src="/png/phone.png" className="w-4" alt="Phone" />
+              <img src="/images/png/phone.png" className="w-4" alt="Phone" />
               <p className="text-sm sm:text-base">+1 XXX XXX XXXX</p>
             </div>
           </div>
@@ -120,11 +120,11 @@ export default function Footer() {
         {/* Right side */}
         <div className="flex flex-wrap justify-center sm:justify-end gap-4">
           <button className="px-3 py-2 rounded-full flex items-center gap-2 bg-[#1a1a1a] hover:bg-[#2a2a2a]">
-            <img src="/png/location-pin.png" className="w-4" alt="Location" />
+            <img src="/images/png/location-pin.png" className="w-4" alt="Location" />
             <p className="text-sm">New York</p>
           </button>
           <button className="px-3 py-2 rounded-full flex items-center gap-2 text-white bg-[#626262] hover:bg-[#7a7a7a]">
-            <img src="/png/world.png" className="w-4" alt="World" />
+            <img src="/images/png/world.png" className="w-4" alt="World" />
             <p className="text-sm">English</p>
           </button>
         </div>

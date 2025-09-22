@@ -64,7 +64,7 @@ export default function Input({
       {/* Error message */}
       {error && (
         <div className="flex items-center gap-1 mt-1">
-          <img src="/png/ibutton.png" className="w-4" />
+          <img src="/images/png/ibutton.png" className="w-4" />
           <p className="text-red-500 text-xs">{error}</p>
         </div>
       )}

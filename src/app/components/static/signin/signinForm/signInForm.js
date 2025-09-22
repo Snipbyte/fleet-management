@@ -25,7 +25,7 @@ export default function SignInForm() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input label="Email" type="email" />
-          <Input label="Password" type={!showPassword ? "password" : "text"} icon={<img src={showPassword ? '/png/eye-open.png' : '/png/eye-close.png'} className='w-5' onClick={() => setShowPassword(!showPassword)} />} />
+          <Input label="Password" type={!showPassword ? "password" : "text"} icon={<img src={showPassword ? '/images/png/eye-open.png' : '/images/png/eye-close.png'} className='w-5' onClick={() => setShowPassword(!showPassword)} />} />
           {/* Terms */}
           <div className="flex items-center justify-between">
             <Checkbox

@@ -28,7 +28,7 @@ function AdminHeader() {
         </div>
         <div className="flex items-center gap-4 px-4">
           <h1>John Smith</h1>
-          <img src={"/jpg/image.png"} className="w-8 h-8" />
+          <img src={"/images/jpg/image.png"} className="w-8 h-8" />
         </div>
       </div>
     </header>
