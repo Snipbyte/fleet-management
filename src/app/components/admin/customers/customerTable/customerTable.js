@@ -8,9 +8,9 @@ import { AiOutlineEye } from "react-icons/ai";
 import { getStatusColor } from '../../../../../utils/services';
 import AdminHeader from '../../../common/adminHeader/adminHeader';
 import Button from '../../../common/button/button';
-import CustomerViewModal from '../CustomerViewModal/CustomerViewModal';
-import CustomerFormModal from '../CustomerFormModal/CustomerFormModal';
-import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
+import CustomerViewModal from '../customerViewModal/customerViewModal';
+import CustomerFormModal from '../customerFormModal/customerFormModal';
+import DeleteConfirmationModal from '../deleteConfirmationModal/deleteConfirmationModal';
 
 // Sample customer data
 const data = [
@@ -303,7 +303,7 @@ export default function CustomerTable() {
         <div className="bg-gray-50">
             <div className="flex items-center justify-between mb-6">
                 <AdminHeader title="Customers" />
-                <Button onClick={handleAddCustomer} className="px-3 py-2 rounded-md">
+                <Button onClick={handleAddCustomer} className="px-5 py-2 rounded-md text-nowrap">
                     Add New Customer
                 </Button>
             </div>
