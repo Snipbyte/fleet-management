@@ -30,8 +30,8 @@ export default function CreateNewPasswordMainPage() {
                 <img
                   src={
                     showNewPassword
-                      ? "/png/eye-open.png"
-                      : "/png/eye-close.png"
+                      ? "/images/png/eye-open.png"
+                      : "/images/png/eye-close.png"
                   }
                   className="w-5 cursor-pointer"
                   onClick={() => setShowNewPassword(!showNewPassword)}
@@ -47,8 +47,8 @@ export default function CreateNewPasswordMainPage() {
                 <img
                   src={
                     showConfirmPassword
-                      ? "/png/eye-open.png"
-                      : "/png/eye-close.png"
+                      ? "/images/png/eye-open.png"
+                      : "/images/png/eye-close.png"
                   }
                   className="w-5 cursor-pointer"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
