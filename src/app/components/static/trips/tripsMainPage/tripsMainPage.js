@@ -154,8 +154,23 @@ const data = [
   }
 ];
 
-const timeFilters = ["Last 30 Days", "Last 7 Days", "All"];
-const statuses = ["All Status", "Pending", "In Progress", "Success", "Rejected"];
+const timeFilters = [
+  { label: "Today", value: "today" },
+  { label: "This Week", value: "this_week" },
+  { label: "This Month", value: "this_month" },
+];
+
+// ✅ Status Filters (updated)
+const statuses = [
+  { label: "All Status", value: "all" },
+  { label: "Completed", value: "completed" },
+  { label: "Pending", value: "pending" },
+  { label: "Approved", value: "approved" },
+  { label: "In Progress", value: "in_progress" },
+  { label: "Success", value: "success" },
+  { label: "Ongoing", value: "ongoing" },
+  { label: "Rejected", value: "rejected" },
+];
 
 export default function TripsMainPage() {
   const router = useRouter()
@@ -209,10 +224,18 @@ export default function TripsMainPage() {
         </div>
       ),
     },
+    {
+      key: "assignedDriver", header: "Assigned Driver", render: (row) => (
+        <div className='flex items-center gap-2'>
+          <img src='/images/jpg/image.png' className='w-8 h-8' />
+          <p>{row.assignedDriver}</p>
+        </div>
+      ),
+    },
     { key: "dateTime", header: "Date & Time" },
     { key: "pickupLocation", header: "Pickup Location" },
     { key: "dropoffLocation", header: "Dropoff Location" },
-    { key: "total", header: "Total" },
+    { key: "total", header: "Total Amount" },
     {
       key: "status", header: "Trip Status", render: (row) => {
         const statusClass = getStatusColor(row.status);
@@ -243,14 +266,7 @@ export default function TripsMainPage() {
         );
       }
     },
-    {
-      key: "assignedDriver", header: "Assigned Driver", render: (row) => (
-        <div className='flex items-center gap-2'>
-          <img src='/images/jpg/image.png' className='w-8 h-8' />
-          <p>{row.assignedDriver}</p>
-        </div>
-      ),
-    },
+
     {
       key: "actions",
       header: "Actions",
@@ -271,8 +287,8 @@ export default function TripsMainPage() {
               e.stopPropagation()
               setOpenDropdown(openDropdown === row.no ? null : row.no)
             }}
-            className="bg-inputBg px-2 py-2.5 rounded-lg flex items-center justify-center cursor-pointer">
-            <img src='/png/ellipsis-horizontal.png' className='w-4 h-4 object-contain' />
+            className="bg-inputBg w-10 h-[36px] rounded-lg flex items-center justify-center cursor-pointer">
+            <img src='/images/png/ellipsis-horizontal.png' className='w-4 h-4 object-contain' />
           </div>
           {/* </Link> */}
           {/* Dropdown menu */}
@@ -294,7 +310,6 @@ export default function TripsMainPage() {
                   <li
                     className="px-4 py-3 hover:bg-inputBg cursor-pointer flex items-center gap-2 rounded-md"
                     onClick={() => {
-                      alert(`Assign Driver for Trip ${row.tripid}`);
                       setOpenDropdown(null);
 
                     }}
@@ -303,20 +318,20 @@ export default function TripsMainPage() {
                     <p>Assign Driver</p>
                   </li>
                 </Link>
-                <li
-                  className="px-4 py-3 hover:bg-inputBg cursor-pointer flex items-center gap-2 rounded-md "
-                  onClick={() => {
-                    alert(`Send Invoice for Trip ${row.tripid}`);
-                    setOpenDropdown(null);
-                  }}
-                >
-                  <img src={"/images/png/calender.png"} className='w-6 object-contain' />
-                  <p>Send Invoice</p>
-                </li>
+                <Link href={"/admin/trips/send-invoice"}>
+                  <li
+                    className="px-4 py-3 hover:bg-inputBg cursor-pointer flex items-center gap-2 rounded-md "
+                    onClick={() => {
+                      setOpenDropdown(null);
+                    }}
+                  >
+                    <img src={"/images/png/calender.png"} className='w-6 object-contain' />
+                    <p>Send Invoice</p>
+                  </li>
+                </Link>
                 <li
                   className="px-4 py-2.5 hover:bg-inputBg cursor-pointer text-red-600 flex items-center gap-2 rounded-md"
                   onClick={() => {
-                    // alert(`Cancel Trip ${row.tripid}`);
                     setOpenDropdown(null);
                     setDeleteModalVisible(true)
                   }}
@@ -335,7 +350,7 @@ export default function TripsMainPage() {
 
   return (
     <div className='bg-gray-50 px-6 py-4'>
-      <AdminHeader title={"Booking"} />
+      <AdminHeader showButtons={false} title={"Trips Management"} />
       <div className='bg-white rounded-lg p-4 mt-2'>
         <FilterBar
           timeFilters={timeFilters}
