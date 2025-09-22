@@ -47,7 +47,7 @@ export default function FilterBar({
           <FiSearch className="absolute left-4 text-gray-400" size={18} />
           <input
             type="text"
-            placeholder="Search by order ID, customer, or vehicle..."
+            placeholder="Search Here..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg bg-inputBg focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent transition-all"
@@ -66,7 +66,7 @@ export default function FilterBar({
           className="bg-btnBg hover:bg-btnHover text-white px-4 py-3 rounded-lg transition-all"
         >
           Search
-        </button>
+        </Button>
       </div>
 
       {/* 🏷 Filters Section */}
