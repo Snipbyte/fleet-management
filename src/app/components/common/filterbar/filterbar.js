@@ -74,14 +74,14 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
               <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
                 {timeFilters.map((item) => (
                   <div
-                    key={item.value}
+                    key={item}
                     onClick={() => {
-                      setTimeFilter(item.label);
+                      setTimeFilter(item);
                       setIsTimeOpen(false);
                     }}
-                    className="px-2 mx-2 py-1.5 flex items-center justify-between rounded-md cursor-pointer hover:bg-btnHover hover:text-white transition-colors"
+                    className={`px-2 mx-2 py-1.5 flex items-center justify-between rounded-md cursor-pointer hover:bg-btnHover hover:text-white transition-colors}`}
                   >
-                    <span>{item.label}</span>
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
@@ -105,17 +105,16 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
             <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
               {statuses.map((s) => (
                 <div
-                  key={s.value}
+                  key={s}
                   onClick={() => {
-                    setStatus(s.label);
+                    setStatus(s);
                     setIsStatusOpen(false);
                   }}
-                  className="mx-2 px-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors"
+                  className={`mx-2 px-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors}`}
                 >
-                  <span>{s.label}</span>
+                  <span className={""}>{s}</span>
                 </div>
               ))}
-
             </div>
           )}
         </div>
@@ -138,14 +137,14 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
               <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
                 {vehicles.map((v) => (
                   <div
-                    key={v.value}
+                    key={v}
                     onClick={() => {
-                      setVehicle(v.label);
+                      setVehicle(v);
                       setIsVehicleOpen(false);
                     }}
-                    className="px-2 mx-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors"
+                    className={`px-2 mx-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors }`}
                   >
-                    <span>{v.label}</span>
+                    <span>{v}</span>
                   </div>
                 ))}
               </div>
@@ -165,3 +164,7 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
     </div>
   );
 }
+
+
+
+

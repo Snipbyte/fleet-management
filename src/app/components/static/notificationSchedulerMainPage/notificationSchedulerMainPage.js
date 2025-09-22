@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { FiCalendar, FiClock } from "react-icons/fi";
 import Input from "../../common/input/input";
-import Dropdowns from "../../common/dropdowns/dropdowns"
 
 export default function NotificationSchedulerMainPage() {
   const [title, setTitle] = useState("");
@@ -34,10 +33,41 @@ export default function NotificationSchedulerMainPage() {
                 type="text"
                 label={"Notification Title"}
               />
-
-              <Dropdowns value={"Specific Customer"} options={["Specific Customer", "All Customer"]} />
-              <Dropdowns value={"John Smith"} options={["Specific Customer", "All Customer"]} />
-              <Dropdowns value={"Upcoming"} options={["Specific Customer", "All Customer"]} />
+              <Input
+                type="text"
+                label={"Notification Title"}
+              />
+              <Input
+                type="text"
+                label={"Notification Title"}
+              />
+              <Input
+                type="text"
+                label={"Notification Title"}
+              />
+              {/* <select
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full"
+              value="Specific Customer"
+            >
+              <option>Specific Customer</option>
+              <option>All Customers</option>
+            </select>
+            <select
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full"
+              value={customer}
+              onChange={(e) => setCustomer(e.target.value)}
+            >
+              <option>John Smith</option>
+              <option>Jane Doe</option>
+            </select>
+            <select
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full"
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <option>Upcoming</option>
+              <option>Completed</option>
+            </select> */}
             </div>
           </div>
 
