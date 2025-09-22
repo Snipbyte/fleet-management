@@ -7,6 +7,7 @@ import BookingDetail from '../../common/bookingDetails/bookingDetails';
 import { getStatusColor } from '../../../../utils/services';
 import CustomModal from '../../common/modal/modal';
 import Link from 'next/link';
+import AdminHeader from '../../common/adminHeader/adminHeader';
 
 const data = [
   {
@@ -222,9 +223,24 @@ const data = [
 ];
 
 
-const timeFilters = ["Today", "Last Week", "Last Month", "Last Year"];
-const statuses = ["All Status", "Paid", "In Progress", "Pending", "Rejected", "Approved"];
-const vehicles = ["Vehicle", "Car", "Bike", "Truck", "Bus"];
+const timeFilters = [
+  { label: "Today", value: "today" },
+  { label: "This Week", value: "this_week" },
+  { label: "This Month", value: "this_month" },
+];
+
+// ✅ Status Filters (updated)
+const statuses = [
+  { label: "All Status", value: "all" },
+  { label: "Completed", value: "completed" },
+  { label: "Pending", value: "pending" },
+  { label: "Approved", value: "approved" },
+  { label: "In Progress", value: "in_progress" },
+  { label: "Success", value: "success" },
+  { label: "Ongoing", value: "ongoing" },
+  { label: "Rejected", value: "rejected" },
+];
+const vehicles = [{ label: "Vehicle", value: "select" }, { label: "Car", value: "car" }, { label: "Bike", value: "bike" }, { label: "Truck", value: "truck" }, { label: "Bus", value: "bus" }];
 
 export default function ReservationMainPage() {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -307,7 +323,7 @@ export default function ReservationMainPage() {
 
   return (
     <div className='bg-gray-50 px-6 py-4'>
-      <h1>Booking</h1>
+      <AdminHeader title={"Reservations"} showButtons={false} />
       <div className='bg-white rounded-lg p-4 mt-2'>
         <FilterBar showTimeFilter={true} timeFilters={timeFilters} statuses={statuses} vehicles={vehicles} search={search} setSearch={setSearch} onSearch={handleSearch} />
         <Table

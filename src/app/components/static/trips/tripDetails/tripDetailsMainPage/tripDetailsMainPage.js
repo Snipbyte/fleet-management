@@ -34,32 +34,7 @@ export default function TripDetailsMainPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="flex justify-between items-center mb-6">
-        <AdminHeader title={`Trip Detail - ${trip.id}`} />
-
-        {/* Toggle Button */}
-        {/* <div className="relative w-[20%] inline-flex bg-white rounded-lg p-2">
-          <div className="flex relative w-full">
-            {options.map((option, index) => (
-              <button
-                key={index}
-                className={`relative w-full z-10 px-3 py-2.5 text-xs font-medium transition-colors duration-300 ${selected === index
-                  ? "text-white"
-                  : "text-gray-600 hover:text-gray-800"
-                  }`}
-                onClick={() => handleToggle(index)}
-              >
-                {option.label}
-              </button>
-            ))}
-            <div
-              className="absolute inset-y-0 left-0 z-0 bg-btnHover rounded-md transition-all duration-300 ease-in-out"
-              style={{
-                width: `${100 / options.length}%`,
-                transform: `translateX(${selected * 100}%)`,
-              }}
-            />
-          </div>
-        </div> */}
+        <AdminHeader showButtons={false} showIcon={true} title={`Trip Detail - ${trip.id}`} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
