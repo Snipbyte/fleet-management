@@ -23,3 +23,6 @@ const Tabs = ({ tabs }) => {
 };
 
 export default Tabs;
+
+
+
