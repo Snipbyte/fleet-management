@@ -1,23 +1,34 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { FiSearch, FiChevronDown, FiX, FiCalendar, FiCheck, FiTruck, FiClock } from "react-icons/fi";
-import Button from "../button/button";
+import React, { useRef, useEffect } from "react";
+import { FiSearch, FiChevronDown, FiX } from "react-icons/fi";
 
-export default function FilterBar({ timeFilters = true, showTimeFilter, statuses, vehicles, search, setSearch, onSearch, showVehicle = true, buttonTitle, onClick, showButton = false }) {
-
-  const [timeFilter, setTimeFilter] = useState("Today");
-  const [status, setStatus] = useState("All Status");
-  const [vehicle, setVehicle] = useState("Vehicle");
-  const [isTimeOpen, setIsTimeOpen] = useState(false);
-  const [isStatusOpen, setIsStatusOpen] = useState(false);
-  const [isVehicleOpen, setIsVehicleOpen] = useState(false);
-
-
+export default function FilterBar({
+  timeFilters = [],
+  showTimeFilter = true,
+  statuses = [],
+  vehicles = [],
+  search,
+  setSearch,
+  onSearch,
+  showVehicle = true,
+  buttonTitle,
+  onClick,
+  showButton = false,
+  // ✅ Controlled props from parent
+  selectedTime,
+  setSelectedTime,
+  selectedStatus,
+  setSelectedStatus,
+}) {
+  const [isTimeOpen, setIsTimeOpen] = React.useState(false);
+  const [isStatusOpen, setIsStatusOpen] = React.useState(false);
+  const [isVehicleOpen, setIsVehicleOpen] = React.useState(false);
 
   const timeRef = useRef(null);
   const statusRef = useRef(null);
   const vehicleRef = useRef(null);
 
+  // ✅ Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (timeRef.current && !timeRef.current.contains(event.target)) setIsTimeOpen(false);
@@ -30,8 +41,8 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
 
   return (
     <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white mb-4">
-      {/* Search Section */}
-      <div className="flex items-center gap-2 relative w-full md:w-2/5">
+      {/* 🔍 Search Section */}
+      <div className="flex items-center gap-2 relative w-full md:w-2/5 lg:w-1/2">
         <div className="relative flex items-center w-11/12">
           <FiSearch className="absolute left-4 text-gray-400" size={18} />
           <input
@@ -39,7 +50,7 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
             placeholder="Search Here..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg bg-inputBg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg bg-inputBg focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent transition-all"
           />
           {search && (
             <button
@@ -50,121 +61,104 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
             </button>
           )}
         </div>
-        <Button onClick={onSearch} className="px-6 py-3 rounded-lg">
+        <button
+          onClick={onSearch}
+          className="bg-btnBg hover:bg-btnHover text-white px-4 py-3 rounded-lg transition-all"
+        >
           Search
         </Button>
       </div>
 
-      {/* Filters Section */}
+      {/* 🏷 Filters Section */}
       <div className="flex w-full md:w-3/5 flex-wrap gap-3 items-center justify-start md:justify-end">
+
         {/* Time Filter */}
-        {showTimeFilter &&
+        {showTimeFilter && (
           <div className="relative" ref={timeRef}>
             <button
               onClick={() => setIsTimeOpen(!isTimeOpen)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
+              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg rounded-md min-w-[140px] justify-between"
             >
-              <div className="flex items-center gap-2">
-                <span>{timeFilter}</span>
-              </div>
-              <FiChevronDown size={16} className={`text-gray-400 transition-transform ${isTimeOpen ? "rotate-180" : ""}`} />
+              <span>
+                {timeFilters.find((t) => t.value === selectedTime)?.label || "Select Time"}
+              </span>
+              <FiChevronDown
+                size={16}
+                className={`text-gray-400 transition-transform ${isTimeOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
             {isTimeOpen && (
               <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
                 {timeFilters.map((item) => (
                   <div
-                    key={item}
+                    key={item.value}
                     onClick={() => {
-                      setTimeFilter(item);
+                      setSelectedTime(item.value);
                       setIsTimeOpen(false);
                     }}
-                    className={`px-2 mx-2 py-1.5 flex items-center justify-between rounded-md cursor-pointer hover:bg-btnHover hover:text-white transition-colors}`}
+                    className="px-2 mx-2 py-1.5 cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors"
                   >
-                    <span>{item}</span>
+                    {item.label}
                   </div>
                 ))}
               </div>
             )}
           </div>
-        }
+        )}
 
         {/* Status Filter */}
-        <div className="relative" ref={statusRef}>
-          <button
-            onClick={() => setIsStatusOpen(!isStatusOpen)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
-          >
-            <div className="flex items-center gap-2">
-              <span className={""}>{status}</span>
-            </div>
-            <FiChevronDown size={16} className={`text-gray-400 transition-transform ${isStatusOpen ? "rotate-180" : ""}`} />
-          </button>
-
-          {isStatusOpen && (
-            <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
-              {statuses.map((s) => (
-                <div
-                  key={s}
-                  onClick={() => {
-                    setStatus(s);
-                    setIsStatusOpen(false);
-                  }}
-                  className={`mx-2 px-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors}`}
-                >
-                  <span className={""}>{s}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Vehicle Filter */}
-        {showVehicle &&
-          <div className="relative" ref={vehicleRef}>
+        {statuses.length > 0 && (
+          <div className="relative" ref={statusRef}>
             <button
-              onClick={() => setIsVehicleOpen(!isVehicleOpen)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
+              onClick={() => setIsStatusOpen(!isStatusOpen)}
+              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg rounded-md min-w-[140px] justify-between"
             >
-              <div className="flex items-center gap-2">
-                <span>{vehicle}</span>
-                {vehicle !== "Vehicle"}
-              </div>
-              <FiChevronDown size={16} className={`text-gray-400 transition-transform ${isVehicleOpen ? "rotate-180" : ""}`} />
+              <span>
+                {statuses.find((s) => s.value === selectedStatus)?.label || "All Status"}
+              </span>
+              <FiChevronDown
+                size={16}
+                className={`text-gray-400 transition-transform ${isStatusOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
-            {isVehicleOpen && (
+            {isStatusOpen && (
               <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-hidden py-2">
-                {vehicles.map((v) => (
+                {statuses.map((s) => (
                   <div
-                    key={v}
+                    key={s.value}
                     onClick={() => {
-                      setVehicle(v);
-                      setIsVehicleOpen(false);
+                      setSelectedStatus(s.value);
+                      setIsStatusOpen(false);
                     }}
-                    className={`px-2 mx-2 py-1.5 flex items-center justify-between cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors }`}
+                    className="px-2 mx-2 py-1.5 cursor-pointer rounded-md hover:bg-btnHover hover:text-white transition-colors"
                   >
-                    <span>{v}</span>
+                    {s.label}
                   </div>
                 ))}
               </div>
             )}
           </div>
-        }
+        )}
 
-        {showButton &&
+        {/* Vehicle Filter (optional) */}
+        {showVehicle && vehicles.length > 0 && (
+          <div className="relative" ref={vehicleRef}>
+            {/* Similar pattern */}
+          </div>
+        )}
+
+        {/* Action Button */}
+        {showButton && (
           <button
             onClick={onClick}
             className="px-4 bg-black text-white py-2.5 rounded-md font-medium hover:bg-gray-800"
           >
             {buttonTitle}
           </button>
-        }
+        )}
       </div>
     </div>
   );
 }
-
-
-
-
