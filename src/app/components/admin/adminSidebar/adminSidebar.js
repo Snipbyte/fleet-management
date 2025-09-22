@@ -16,7 +16,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { LuUsersRound } from "react-icons/lu";
 import { BiUserPin } from "react-icons/bi";
 import { useState } from "react";
-import LogoutModal from "../../../components/admin/LogoutModal/LogoutModal";
+import LogoutModal from "../logoutModal/logoutModal";
 
 const sidebarItems = [
   { name: "Dashboard", href: "/admin/dashboard", icon: TbLayout2 },
