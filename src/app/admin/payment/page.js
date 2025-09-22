@@ -1,4 +1,4 @@
-import PaymentMainPage from '@/app/components/admin/payment/paymentMainPage/paymentMainPage'
+import PaymentMainPage from '@/app/components/admin/payments/paymentMainPage/paymentMainPage'
 import React from 'react'
 
 const Payment = () => {
