@@ -179,8 +179,26 @@ const data = [
     },
 ];
 
-const timeFilters = ["Last 30 Days", "Last 7 Days", "All"];
-const statuses = ["All Status", "Pending", "In Progress", "Success", "Rejected"];
+// Updated timeFilters and statuses to match expected object format
+const timeFilters = [
+    { value: "last30Days", label: "Last 30 Days" },
+    { value: "last7Days", label: "Last 7 Days" },
+    { value: "all", label: "All" },
+];
+
+const statuses = [
+    { value: "all", label: "All Status" },
+    { value: "pending", label: "Pending" },
+    { value: "inProgress", label: "In Progress" },
+    { value: "success", label: "Success" },
+    { value: "rejected", label: "Rejected" },
+];
+
+// Added vehicles array for completeness
+const vehicles = [
+    { value: "kia", label: "Kia Telluride" },
+    { value: "honda", label: "Honda CR-V" },
+];
 
 export default function DriversTable() {
     const [search, setSearch] = useState("");
@@ -310,7 +328,7 @@ export default function DriversTable() {
                 <AdminHeader title="Drivers" />
                 <Button
                     onClick={handleAddDriver}
-                    className="px-3 py-2 rounded-md"
+                    className="px-3 py-2 rounded-md text-nowrap"
                 >
                     Add Driver
                 </Button>
@@ -319,10 +337,12 @@ export default function DriversTable() {
                 <FilterBar
                     timeFilters={timeFilters}
                     statuses={statuses}
+                    vehicles={vehicles} // Added vehicles prop
                     search={search}
                     setSearch={setSearch}
                     onSearch={handleSearch}
                     showVehicle={false}
+                    showTimeFilter={true} // Explicitly enable time filter
                 />
                 <Table
                     data={filteredData}
