@@ -314,7 +314,7 @@ export default function TripsMainPage() {
 
                     }}
                   >
-                    <img src={"/png/user.png"} className='w-6 object-contain' />
+                    <img src={"/images/png/user.png"} className='w-6 object-contain' />
                     <p>Assign Driver</p>
                   </li>
                 </Link>

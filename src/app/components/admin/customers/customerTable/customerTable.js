@@ -1,3 +1,4 @@
+// components/CustomerTable.jsx
 "use client";
 import React, { useState } from 'react';
 import FilterBar from '../../../common/filterbar/filterbar';
@@ -137,7 +138,7 @@ const data = [
     },
     {
         no: 12,
-        customerId: "C789",
+        customerId: "C788", // Changed from "C789" to avoid duplicate
         name: "Sana Rashid",
         email: "sana.rashid@example.com",
         phoneNumber: "+92 309 1234567",
@@ -181,8 +182,17 @@ const data = [
     },
 ];
 
-const timeFilters = ["Last 30 Days", "Last 7 Days", "All"];
-const statuses = ["All Status", "Active", "In Active"];
+// Updated statuses to match expected object format
+const statuses = [
+    { value: "all", label: "All Status" },
+    { value: "active", label: "Active" },
+    { value: "inactive", label: "Inactive" },
+];
+
+// Added vehicles array for completeness
+const vehicles = [
+    { value: "none", label: "None" }, // Placeholder since vehicles are not relevant for customers
+];
 
 export default function CustomerTable() {
     const [search, setSearch] = useState("");
@@ -309,12 +319,13 @@ export default function CustomerTable() {
             </div>
             <div className="bg-white rounded-lg p-4 mt-2">
                 <FilterBar
-                    timeFilters={timeFilters}
                     statuses={statuses}
+                    vehicles={vehicles}
                     search={search}
                     setSearch={setSearch}
                     onSearch={handleSearch}
                     showVehicle={false}
+                    showTimeFilter={false} // Hide Time Filter
                 />
                 <Table
                     data={filteredData}

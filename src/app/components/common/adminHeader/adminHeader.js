@@ -23,7 +23,7 @@ export default function AdminHeader({ title, showIcon, showButtons, buttonVisibl
   return (
     <div className='flex w-full items-center justify-between'>
       <div className='flex items-center gap-2'>
-        {showIcon && <img onClick={() => router.back()} src={"/png/arrow-back.png"} className='w-8 h-8 object-contain cursor-pointer' />}
+        {showIcon && <img onClick={() => router.back()} src={"/images/png/arrow-back.png"} className='w-8 h-8 object-contain cursor-pointer' />}
         <h1 className='font-semibold text-lg'>{title}</h1>
       </div>
       {showButtons === true && (

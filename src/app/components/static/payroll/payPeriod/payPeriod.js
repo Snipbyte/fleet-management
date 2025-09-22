@@ -334,7 +334,7 @@ export default function PayPeriod() {
       header: "Customer Name",
       render: (row) => (
         <div className="flex items-center gap-2">
-          <img src="/jpg/image.png" className="w-8 h-8" />
+          <img src="/images/jpg/image.png" className="w-8 h-8" />
           <p>{highlightText(row.customerName, search)}</p>
         </div>
       ),
@@ -349,7 +349,7 @@ export default function PayPeriod() {
       header: "Assigned Driver",
       render: (row) => (
         <div className="flex items-center gap-2">
-          <img src="/jpg/image.png" className="w-8 h-8" />
+          <img src="/images/jpg/image.png" className="w-8 h-8" />
           <p>{row.assignedDriver}</p>
         </div>
       ),
@@ -413,7 +413,7 @@ export default function PayPeriod() {
             className="bg-blue-50 px-2.5 py-2.5 rounded-lg flex items-center justify-center cursor-pointer"
           >
             <img
-              src="/png/eye.png"
+              src="/images/png/eye.png"
               className="w-4 h-4 object-contain"
             />
           </div>

@@ -186,7 +186,7 @@ export default function PayrollDetails() {
       header: "Assigned Driver",
       render: (row) => (
         <div className="flex items-center gap-2">
-          <img src="/jpg/image.png" className="w-8 h-8" />
+          <img src="/images/jpg/image.png" className="w-8 h-8" />
           <p>{row.assignedDriver}</p>
         </div>
       ),
@@ -271,7 +271,7 @@ export default function PayrollDetails() {
         <div
           className={`w-8 h-8 flex items-center justify-center rounded-[6px] bg-blue-50 cursor-pointer`}
         >
-          <img src={"/png/eye.png"} className="w-5" />
+          <img src={"/images/png/eye.png"} className="w-5" />
         </div>
       ),
     },
