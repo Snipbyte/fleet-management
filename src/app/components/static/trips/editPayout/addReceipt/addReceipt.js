@@ -65,7 +65,7 @@ export default function AddReceipt({ isOpen, onClose, onConfirm }) {
           />
         ) : (
           <div className="flex flex-col items-center justify-center space-y-2">
-            <img src={"/png/logout.png"} className="w-8" />
+            <img src={"/images/png/logout.png"} className="w-8" />
             <h1 className="font-medium">Upload Receipt</h1>
             <p>Drag and drop files here, or click to select files</p>
             <p className="text-gray-500">Support JPG, PNG, PDF (max 5MB each)</p>

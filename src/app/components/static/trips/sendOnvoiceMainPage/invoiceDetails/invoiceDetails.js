@@ -21,7 +21,7 @@ export default function InvoiceDetails() {
         </div>
         <div className="text-center">
           <img
-            src="/png/footer-logo.png"
+            src="/images/png/footer-logo.png"
             alt="Logo"
             width={90}
             height={90}
