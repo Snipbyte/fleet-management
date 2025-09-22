@@ -27,7 +27,7 @@ const sidebarItems = [
   { name: "Payment", href: "/admin/payment", icon: MdPayment },
   { name: "Payroll", href: "/admin/payroll", icon: AiOutlineDollarCircle },
   { name: "Send Notification", href: "/admin/notification", icon: IoIosNotificationsOutline },
-  { name: "Account Settings", href: "/admin/settings", icon: IoLogOutOutline },
+  { name: "Account Settings", href: "/admin/profile", icon: IoLogOutOutline },
   { name: "Logout", href: "#", icon: MdOutlineSettingsSuggest },
 ];
 
@@ -99,7 +99,7 @@ export default function AdminSidebar() {
                       <Link
                         href={item.href}
                         className={`flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${isActive
-                          ? "bg-white text-black font-medium shadow-sm"
+                          ? "bg-btnHover text-white font-medium shadow-sm"
                           : "text-white hover:bg-white/30 hover:text-white"
                           }`}
                         onClick={() => isMobile && setIsOpen(false)}

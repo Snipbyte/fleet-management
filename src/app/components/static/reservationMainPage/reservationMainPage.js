@@ -8,6 +8,7 @@ import { getStatusColor } from '../../../../utils/services';
 import CustomModal from '../../common/modal/modal';
 import Link from 'next/link';
 import AdminHeader from '../../common/adminHeader/adminHeader';
+import AdminHeader from '../../common/adminHeader/adminHeader';
 
 const data = [
   {
