@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { FiSearch, FiChevronDown, FiX, FiCalendar, FiCheck, FiTruck, FiClock } from "react-icons/fi";
+import Button from "../button/button";
 
 export default function FilterBar({ timeFilters = true, showTimeFilter, statuses, vehicles, search, setSearch, onSearch, showVehicle = true, buttonTitle, onClick, showButton = false }) {
 
@@ -35,7 +36,7 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
           <FiSearch className="absolute left-4 text-gray-400" size={18} />
           <input
             type="text"
-            placeholder="Search by order ID, customer, or vehicle..."
+            placeholder="Search Here..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg bg-inputBg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -49,9 +50,9 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
             </button>
           )}
         </div>
-        <button onClick={onSearch} className="bg-btnBg hover:bg-btnHover text-white px-4 py-3 rounded-lg transition-all">
+        <Button onClick={onSearch} className="px-6 py-3 rounded-lg">
           Search
-        </button>
+        </Button>
       </div>
 
       {/* Filters Section */}

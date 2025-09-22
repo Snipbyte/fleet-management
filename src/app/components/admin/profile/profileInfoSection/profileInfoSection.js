@@ -1,10 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
 import Input from "../../../common/input/input";
-import Button from "@/app/components/common/button/button"; 
+import Button from "../../../common/button/button"; 
 import { FiCamera } from "react-icons/fi";
 
-const ProfileSection = () => {
+const ProfileInfoSection = () => {
   const fileInputRef = useRef(null);
   const [profileImage, setProfileImage] = useState(null);
   const [fullName, setFullName] = useState("John Smith");
@@ -83,4 +83,4 @@ const ProfileSection = () => {
   );
 };
 
-export default ProfileSection;
+export default ProfileInfoSection;

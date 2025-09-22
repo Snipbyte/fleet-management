@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Input from "../../../common/input/input";
-import Button from "@/app/components/common/button/button"; 
+import Button from "../../../common/button/button"; 
 
-const PasswordSection = () => {
+const PasswordInfoSection = () => {
   const [formData, setFormData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -58,4 +58,4 @@ const PasswordSection = () => {
   );
 };
 
-export default PasswordSection;
+export default PasswordInfoSection;
