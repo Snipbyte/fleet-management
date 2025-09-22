@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import TripInfoCard from "../../trips/tripInfoCard/tripInfoCard";
-import RouteParticipants from "../../trips/routeParticipants/routeParticipants";
-import Actions from "../../trips/actions/actions";
+import TripInfoCard from "../../tripDetails/tripInfoCard/tripInfoCard";
+import RouteParticipants from "../../tripDetails/routeParticipants/routeParticipants";
+import Actions from "../../tripDetails/actions/actions";
+import AdminHeader from "../../../../common/adminHeader/adminHeader";
 
 export default function TripDetailsMainPage() {
   const [selected, setSelected] = useState(0);
@@ -33,10 +34,10 @@ export default function TripDetailsMainPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-xl font-semibold">Trip Detail - {trip.id}</h1>
+        <AdminHeader title={`Trip Detail - ${trip.id}`} />
 
         {/* Toggle Button */}
-        <div className="relative w-[20%] inline-flex bg-white rounded-lg p-2">
+        {/* <div className="relative w-[20%] inline-flex bg-white rounded-lg p-2">
           <div className="flex relative w-full">
             {options.map((option, index) => (
               <button
@@ -50,7 +51,6 @@ export default function TripDetailsMainPage() {
                 {option.label}
               </button>
             ))}
-            {/* Sliding background */}
             <div
               className="absolute inset-y-0 left-0 z-0 bg-btnHover rounded-md transition-all duration-300 ease-in-out"
               style={{
@@ -59,7 +59,7 @@ export default function TripDetailsMainPage() {
               }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
