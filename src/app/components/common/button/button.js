@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-const Button = ({
-  children,
-  onClick,
-  isLoading = false,
-  disabled = false,
-  className = '',
-  icon: Icon = null
+const Button = ({ 
+  children, 
+  onClick, 
+  isLoading = false, 
+  disabled = false, 
+  className = '', 
+  icon: Icon = null 
 }) => {
   return (
     <button
@@ -17,7 +17,7 @@ const Button = ({
       disabled={disabled || isLoading}
     >
       <span className='relative z-10 flex items-center justify-center'>
-        {Icon && <Icon className="mr-2" />}
+        {Icon && <Icon className="mr-2" />} 
         {isLoading ? 'Submitting...' : children}
       </span>
     </button>

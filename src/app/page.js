@@ -1,5 +1,6 @@
 "use client"
+import TripDetailsMainPage from "./components/static/tripDetails/tripDetailsMainPage/tripDetailsMainPage"
 
 export default function Home() {
-  return <h1>HomePage </h1>
+  return <TripDetailsMainPage />
 }

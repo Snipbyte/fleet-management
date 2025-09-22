@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import VehicleSelectionCard from "../../../common/vehicleSelectionCard/vehicleSelectionCard";
+import VehicleSelectionCard from "@/app/components/common/vehicleSelectionCard/vehicleSelectionCard";
 import { FiArrowLeft, FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 export default function PickVehicle() {

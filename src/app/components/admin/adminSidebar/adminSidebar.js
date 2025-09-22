@@ -16,7 +16,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { LuUsersRound } from "react-icons/lu";
 import { BiUserPin } from "react-icons/bi";
 import { useState } from "react";
-import LogoutModal from "../logoutModal/logoutModal";
+import LogoutModal from "../../../components/admin/LogoutModal/LogoutModal";
 
 const sidebarItems = [
   { name: "Dashboard", href: "/admin/dashboard", icon: TbLayout2 },
@@ -26,7 +26,7 @@ const sidebarItems = [
   { name: "Customers", href: "/admin/customers", icon: LuUsersRound },
   { name: "Payment", href: "/admin/payment", icon: MdPayment },
   { name: "Payroll", href: "/admin/payroll", icon: AiOutlineDollarCircle },
-  { name: "Send Notification", href: "/admin/notifications", icon: IoIosNotificationsOutline },
+  { name: "Send Notification", href: "/admin/notification", icon: IoIosNotificationsOutline },
   { name: "Account Settings", href: "/admin/profile", icon: IoLogOutOutline },
   { name: "Logout", href: "#", icon: MdOutlineSettingsSuggest },
 ];
@@ -99,7 +99,7 @@ export default function AdminSidebar() {
                       <Link
                         href={item.href}
                         className={`flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${isActive
-                          ? "bg-btnHover text-white font-medium shadow-sm"
+                          ? "bg-white text-black font-medium shadow-sm"
                           : "text-white hover:bg-white/30 hover:text-white"
                           }`}
                         onClick={() => isMobile && setIsOpen(false)}

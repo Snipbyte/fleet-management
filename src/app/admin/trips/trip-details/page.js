@@ -1,6 +1,5 @@
-import TripDetailsMainPage from '../../../components/static/trips/tripDetails/tripDetailsMainPage/tripDetailsMainPage'
 import React from 'react'
-
+import TripDetailsMainPage from '../../../components/static/tripDetails/tripDetailsMainPage/tripDetailsMainPage'
 
 export default function page() {
   return <TripDetailsMainPage />
