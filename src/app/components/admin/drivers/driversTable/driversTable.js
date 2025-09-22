@@ -310,7 +310,7 @@ export default function DriversTable() {
                 <AdminHeader title="Drivers" />
                 <Button
                     onClick={handleAddDriver}
-                    className="px-3 py-2 rounded-md"
+                    className="px-3 py-2 rounded-md text-nowrap"
                 >
                     Add Driver
                 </Button>
