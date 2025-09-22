@@ -155,13 +155,14 @@ const Table = ({
 
       {/* Pagination */}
       {!isRecent && data.length > 10 && (
-        <div className="mt-4">
+        <div className="mt-4 flex justify-center">
           <Pagination
             pageCount={Math.ceil(filteredData.length / rowsPerPage)}
             onPageChange={handlePageChange}
           />
         </div>
       )}
+
 
       {/* Modal */}
       <CustomModal
