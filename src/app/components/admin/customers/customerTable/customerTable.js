@@ -1,3 +1,4 @@
+// components/CustomerTable.jsx
 "use client";
 import React, { useState } from 'react';
 import FilterBar from '../../../common/filterbar/filterbar';
@@ -8,9 +9,9 @@ import { AiOutlineEye } from "react-icons/ai";
 import { getStatusColor } from '../../../../../utils/services';
 import AdminHeader from '../../../common/adminHeader/adminHeader';
 import Button from '../../../common/button/button';
-import CustomerViewModal from '../CustomerViewModal/CustomerViewModal';
-import CustomerFormModal from '../CustomerFormModal/CustomerFormModal';
-import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
+import CustomerViewModal from '../customerViewModal/customerViewModal';
+import CustomerFormModal from '../customerFormModal/customerFormModal';
+import DeleteConfirmationModal from '../deleteConfirmationModal/deleteConfirmationModal';
 
 // Sample customer data
 const data = [
@@ -137,7 +138,7 @@ const data = [
     },
     {
         no: 12,
-        customerId: "C789",
+        customerId: "C788", // Changed from "C789" to avoid duplicate
         name: "Sana Rashid",
         email: "sana.rashid@example.com",
         phoneNumber: "+92 309 1234567",
@@ -181,8 +182,17 @@ const data = [
     },
 ];
 
-const timeFilters = ["Last 30 Days", "Last 7 Days", "All"];
-const statuses = ["All Status", "Active", "In Active"];
+// Updated statuses to match expected object format
+const statuses = [
+    { value: "all", label: "All Status" },
+    { value: "active", label: "Active" },
+    { value: "inactive", label: "Inactive" },
+];
+
+// Added vehicles array for completeness
+const vehicles = [
+    { value: "none", label: "None" }, // Placeholder since vehicles are not relevant for customers
+];
 
 export default function CustomerTable() {
     const [search, setSearch] = useState("");
@@ -303,18 +313,19 @@ export default function CustomerTable() {
         <div className="bg-gray-50">
             <div className="flex items-center justify-between mb-6">
                 <AdminHeader title="Customers" />
-                <Button onClick={handleAddCustomer} className="px-3 py-2 rounded-md">
+                <Button onClick={handleAddCustomer} className="px-5 py-2 rounded-md text-nowrap">
                     Add New Customer
                 </Button>
             </div>
             <div className="bg-white rounded-lg p-4 mt-2">
                 <FilterBar
-                    timeFilters={timeFilters}
                     statuses={statuses}
+                    vehicles={vehicles}
                     search={search}
                     setSearch={setSearch}
                     onSearch={handleSearch}
                     showVehicle={false}
+                    showTimeFilter={false} // Hide Time Filter
                 />
                 <Table
                     data={filteredData}

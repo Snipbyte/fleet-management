@@ -1,5 +1,5 @@
 import React from "react";
-import ParticipantCard from "../participantCard/participantCard";
+import ParticipantCard from "../../participantCard/participantCard";
 
 
 export default function RouteParticipants({ pickup, dropoff, participants }) {
