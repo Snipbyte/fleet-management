@@ -1,10 +1,12 @@
-import PaymentMainPage from '@/app/components/admin/payments/paymentMainPage/paymentMainPage'
+
+
+import PaymentsMainPage from '@/app/components/admin/payment/paymentsMainPage/paymentsMainPage'
 import React from 'react'
 
 const Payment = () => {
   return (
     <div>
-        <PaymentMainPage/>
+        <PaymentsMainPage/>
     </div>
   )
 }
