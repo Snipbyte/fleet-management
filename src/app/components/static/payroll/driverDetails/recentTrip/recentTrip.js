@@ -294,7 +294,7 @@ export default function RecentTrip() {
                     router.push("/admin/trips/trip-details")
                   }}
                 >
-                  <img src={"/png/eye.png"} className='w-6 object-contain filter invert' />
+                  <img src={"/images/png/eye.png"} className='w-6 object-contain filter invert' />
                   <p>View Details</p>
                 </li>
                 <Link href={"/admin/trips/assign-driver"}>
@@ -306,7 +306,7 @@ export default function RecentTrip() {
 
                     }}
                   >
-                    <img src={"/png/user.png"} className='w-6 object-contain' />
+                    <img src={"/images/png/user.png"} className='w-6 object-contain' />
                     <p>Assign Driver</p>
                   </li>
                 </Link>
@@ -317,7 +317,7 @@ export default function RecentTrip() {
                     setOpenDropdown(null);
                   }}
                 >
-                  <img src={"/png/calender.png"} className='w-6 object-contain' />
+                  <img src={"/images/png/calender.png"} className='w-6 object-contain' />
                   <p>Send Invoice</p>
                 </li>
                 <li
@@ -328,7 +328,7 @@ export default function RecentTrip() {
                     setDeleteModalVisible(true)
                   }}
                 >
-                  <img src={"/png/bin.png"} className='w-6 object-contain' />
+                  <img src={"/images/png/bin.png"} className='w-6 object-contain' />
                   <p>Cancel Trip </p>
                 </li>
               </ul>

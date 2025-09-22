@@ -9,7 +9,7 @@ export default function DriverInvoiceCard() {
       <h1 className='font-semibold'>Send</h1>
       <div className="flex items-center gap-3 border-borderColor bg-activeBeige p-2 rounded-lg">
         <img
-          src="/jpg/image.png"
+          src="/images/jpg/image.png"
           alt="Profile"
           width={48}
           height={48}

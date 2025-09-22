@@ -166,7 +166,7 @@ const data = [
     },
     {
         no: 12,
-        paymentId: "P789",
+        paymentId: "P788", // Changed from "P789" to avoid duplicate
         bookingId: "B012",
         pickupLocation: "Bahawalpur Airport",
         dropoffLocation: "University Road, Bahawalpur",
@@ -222,8 +222,27 @@ const data = [
     },
 ];
 
-const timeFilters = ["Last 30 Days", "Last 7 Days", "All"];
-const paymentStatuses = ["All Status", "Actibe", "In Active"];
+// Updated timeFilters to use correct object format
+const timeFilters = [
+    { value: "last30Days", label: "Last 30 Days" },
+    { value: "last7Days", label: "Last 7 Days" },
+    { value: "all", label: "All" },
+];
+
+// Updated paymentStatuses to match data and use correct object format
+const paymentStatuses = [
+    { value: "all", label: "All Status" },
+    { value: "pending", label: "Pending" },
+    { value: "paid", label: "Paid" },
+    { value: "inProgress", label: "In Progress" },
+    { value: "rejected", label: "Rejected" },
+    { value: "approved", label: "Approved" },
+];
+
+// Added vehicles array for completeness
+const vehicles = [
+    { value: "none", label: "None" }, // Placeholder since vehicles are not relevant for payments
+];
 
 export default function PaymentTable() {
     const [search, setSearch] = useState("");
@@ -300,22 +319,16 @@ export default function PaymentTable() {
                 <AdminHeader title="Payments" />
             </div>
             <div className="bg-white rounded-lg p-4 mt-2">
-                {/* <FilterBar
+                <FilterBar
                     timeFilters={timeFilters}
                     statuses={paymentStatuses}
+                    vehicles={vehicles}
                     search={search}
                     setSearch={setSearch}
                     onSearch={handleSearch}
                     showVehicle={false}
-                /> */}
-                <FilterBar showTimeFilter={true}
-                    timeFilters={timeFilters}
-                    statuses={paymentStatuses}
-                    showVehicle={false}
-                    search={search}
-                    setSearch={setSearch}
-                    onSearch={handleSearch} />
-
+                    showTimeFilter={true} // Show Time Filter
+                />
                 <Table
                     data={filteredData}
                     columns={columns}
