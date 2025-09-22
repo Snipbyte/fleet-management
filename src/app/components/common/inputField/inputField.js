@@ -38,7 +38,7 @@ export default function InputField({
 
         {showIcon && (
           <img
-            src={"/png/updown.png"}
+            src={"/images/png/updown.png"}
             className="cursor-pointer w-4"
             alt="icon"
           />
@@ -47,7 +47,7 @@ export default function InputField({
 
       {error && (
         <div className="flex items-center gap-1 mt-1">
-          <img src="/png/ibutton.png" className="w-4" alt="error" />
+          <img src="/images/png/ibutton.png" className="w-4" alt="error" />
           <p className="text-red-500 text-xs">{error}</p>
         </div>
       )}

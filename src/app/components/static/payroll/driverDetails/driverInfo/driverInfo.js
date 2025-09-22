@@ -6,7 +6,7 @@ export default function DriverInfo({ driver }) {
       <h2 className="font-semibold text-lg mb-4">Driver Information</h2>
       <div className="flex items-center gap-4 mb-4">
         <img
-          src={"/jpg/image.png"}
+          src={"/images/jpg/image.png"}
           alt={driver.name}
           className="w-16 h-16 rounded-full object-cover"
         />
