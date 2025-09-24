@@ -1,12 +1,12 @@
 import bcrypt from "bcryptjs";
-import User from "@models/user";
+import User from "../../models/user";
 import { 
   generateToken, 
   generateForgotPasswordToken, 
   verifyForgotPasswordToken 
-} from "@utils/jwt";
-import AppError from "@lib/errors/AppError";
-import { sendForgotPasswordEmail } from "@services/email/email";
+} from "../../utils/jwt";
+import AppError from "../../lib/errors/AppError";
+import { sendForgotPasswordEmail } from "../../services/email/email";
 
 export async function registerUser({ name, email, password, phone }) {
   // 1. Check required fields

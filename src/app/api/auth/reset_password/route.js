@@ -1,10 +1,10 @@
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
-import { connect } from "@utils/db";
-import User from "@models/user";
-import { verifyForgotPasswordToken } from "@utils/jwt";
-import AppError from "@lib/errors/AppError";
-import { handleError } from "@lib/errors/handleError";
+import { connect } from "../../../../utils/services";
+import User from "../../../../../models/user";
+import { verifyForgotPasswordToken } from "../../../../utils/services";
+import AppError from "../../../../../lib/errors/AppError";
+import { handleError } from "../../../../../lib/errors/handleError";
 
 export const POST = async (request) => {
   try {
