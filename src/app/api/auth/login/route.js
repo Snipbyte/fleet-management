@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { connect } from "@utils/db";
-import { loginUser } from "@services/auth/auth";
+import { connect } from "../../../../utils/services";
+import { loginUser } from "../../../../../services/auth/auth";
 
 export async function POST(req) {
   try {

@@ -3,8 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
-import { connect } from "@utils/db";
-import User from "@models/user";
+import { connect } from "../utils/db";
+import User from "../models/user";
 
 export const authConfig = {
   session: {

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { connect } from "@utils/db";
-import { forgotPassword } from "@services/auth/auth";
-import { handleError } from "@lib/errors/handleError";
+import { connect } from "../../../../utils/services";
+import { forgotPassword } from "../../../../../services/auth/auth";
+import { handleError } from "../../../../../lib/errors/handleError";
 
 export const POST = async (request) => {
   try {
