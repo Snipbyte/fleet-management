@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import AppError from "@lib/errors/AppError";
+import AppError from "../lib/errors/AppError";
 
 const JWT_SECRET = process.env.JWT_SECRET ; 
 const FORGOT_PASSWORD_SECRET = process.env.FORGOT_PASSWORD_SECRET;
