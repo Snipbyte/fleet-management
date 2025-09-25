@@ -5,7 +5,7 @@ import Button from "../button/button";
 
 export default function FilterBar({ timeFilters = true, showTimeFilter, statuses, vehicles, search, setSearch, onSearch, showVehicle = true, buttonTitle, onClick, showButton = false }) {
 
-  const [timeFilter, setTimeFilter] = useState("Today");
+  const [timeFilter, setTimeFilter] = useState("Last 30 Days");
   const [status, setStatus] = useState("All Status");
   const [vehicle, setVehicle] = useState("Vehicle");
   const [isTimeOpen, setIsTimeOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
             placeholder="Search Here..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg bg-inputBg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg bg-inputBg focus:outline-none focus:border-transparent transition-all"
           />
           {search && (
             <button
@@ -62,7 +62,7 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
           <div className="relative" ref={timeRef}>
             <button
               onClick={() => setIsTimeOpen(!isTimeOpen)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
+              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none min-w-[140px] justify-between"
             >
               <div className="flex items-center gap-2">
                 <span>{timeFilter}</span>
@@ -93,7 +93,7 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
         <div className="relative" ref={statusRef}>
           <button
             onClick={() => setIsStatusOpen(!isStatusOpen)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
+            className="flex items-center gap-2 px-4 py-2.5 bg-inputBg  rounded-md hover:border-gray-300 transition-all focus:outline-none min-w-[140px] justify-between"
           >
             <div className="flex items-center gap-2">
               <span className={""}>{status}</span>
@@ -125,7 +125,7 @@ export default function FilterBar({ timeFilters = true, showTimeFilter, statuses
           <div className="relative" ref={vehicleRef}>
             <button
               onClick={() => setIsVehicleOpen(!isVehicleOpen)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg rounded-md hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px] justify-between"
+              className="flex items-center gap-2 px-4 py-2.5 bg-inputBg rounded-md hover:border-gray-300 transition-all focus:outline-none min-w-[140px] justify-between"
             >
               <div className="flex items-center gap-2">
                 <span>{vehicle}</span>
