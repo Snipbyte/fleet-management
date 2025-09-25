@@ -1,4 +1,3 @@
-// src/models/user.js
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
@@ -18,7 +17,6 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: function () {
-        // Password only required for manual signup, not Google
         return !this.googleId;
       },
     },
@@ -27,7 +25,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     googleId: {
-      type: String, // stores Google account ID
+      type: String,
       required: false,
     },
     profilePicture: {
