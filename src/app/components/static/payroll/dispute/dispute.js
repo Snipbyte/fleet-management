@@ -9,9 +9,9 @@ import DisputeDetails from "../disputeDetails/disputeDetails";
 
 // ✅ Time Filters
 const timeFilters = [
-  { label: "Today", value: "today" },
-  { label: "This Week", value: "this_week" },
-  { label: "Last 30 Days", value: "this_month" },
+ { label: "Last 30 Days", value: "last 30 days" },
+  { label: "Last 7 Days", value: "last 7 days" },
+  { label: "All", value: "all" },
 ];
 
 // ✅ Status Filters (updated)

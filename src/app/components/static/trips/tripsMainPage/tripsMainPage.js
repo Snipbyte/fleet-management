@@ -155,20 +155,17 @@ const data = [
 ];
 
 const timeFilters = [
-  { label: "Today", value: "today" },
-  { label: "This Week", value: "this_week" },
-  { label: "This Month", value: "this_month" },
+   { label: "Last 30 Days", value: "last 30 days" },
+  { label: "Last 7 Days", value: "last 7 days" },
+  { label: "All", value: "all" },
 ];
 
 // ✅ Status Filters (updated)
 const statuses = [
   { label: "All Status", value: "all" },
-  { label: "Completed", value: "completed" },
   { label: "Pending", value: "pending" },
-  { label: "Approved", value: "approved" },
   { label: "In Progress", value: "in_progress" },
   { label: "Success", value: "success" },
-  { label: "Ongoing", value: "ongoing" },
   { label: "Rejected", value: "rejected" },
 ];
 
