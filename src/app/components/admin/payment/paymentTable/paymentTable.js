@@ -232,11 +232,8 @@ const timeFilters = [
 // Updated paymentStatuses to match data and use correct object format
 const paymentStatuses = [
     { value: "all", label: "All Status" },
-    { value: "pending", label: "Pending" },
-    { value: "paid", label: "Paid" },
-    { value: "inProgress", label: "In Progress" },
-    { value: "rejected", label: "Rejected" },
-    { value: "approved", label: "Approved" },
+    { value: "active", label: "Active" },
+    { value: "inActive", label: "In Active" },
 ];
 
 // Added vehicles array for completeness

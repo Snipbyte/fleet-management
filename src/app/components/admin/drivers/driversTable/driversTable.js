@@ -179,19 +179,10 @@ const data = [
     },
 ];
 
-// Updated timeFilters and statuses to match expected object format
-const timeFilters = [
-    { value: "last30Days", label: "Last 30 Days" },
-    { value: "last7Days", label: "Last 7 Days" },
-    { value: "all", label: "All" },
-];
-
 const statuses = [
     { value: "all", label: "All Status" },
-    { value: "pending", label: "Pending" },
-    { value: "inProgress", label: "In Progress" },
-    { value: "success", label: "Success" },
-    { value: "rejected", label: "Rejected" },
+    { value: "active", label: "Active" },
+    { value: "inActive", label: "In Active" },
 ];
 
 // Added vehicles array for completeness
@@ -335,14 +326,13 @@ export default function DriversTable() {
             </div>
             <div className="bg-white rounded-lg p-4 mt-2">
                 <FilterBar
-                    timeFilters={timeFilters}
                     statuses={statuses}
                     vehicles={vehicles} // Added vehicles prop
                     search={search}
                     setSearch={setSearch}
                     onSearch={handleSearch}
                     showVehicle={false}
-                    showTimeFilter={true} // Explicitly enable time filter
+                    showTimeFilter={false} // Explicitly enable time filter
                 />
                 <Table
                     data={filteredData}
