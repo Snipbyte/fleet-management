@@ -5,13 +5,17 @@ const DriverSchema = new mongoose.Schema(
   {
     driverId: {
       type: Number,
-      required: true,
+    //  required: true,
       trim: true,
     },
     userId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
+    },
+    license:{
+      type:String,
+      required:true
     },
     createdAt: {
       type: Date,
