@@ -1,4 +1,3 @@
-// src/app/api/rider/edit/route.js
 import { NextResponse } from "next/server";
 import { connect } from "../../../../../utils/db";
 import { uploadImageToFirebase } from "../../../../../utils/uploadFileToFirebase";
@@ -18,21 +17,19 @@ export async function PUT(req) {
     let profilePictureUrl = null;
     let newPictureUploaded = false;
 
-    // Handle profile picture (optional)
     const profileFile = formData.get("profilePicture");
     if (profileFile && profileFile instanceof Blob && profileFile.size > 0) {
       const arrayBuffer = await profileFile.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
       const filename = profileFile.name || "profile-picture.png";
       profilePictureUrl = await uploadImageToFirebase(
-        "riders/profilePictures", 
+        "riders/profilePictures",
         buffer,
         filename
       );
       newPictureUploaded = true;
     }
 
-    // Collect update fields
     const updateData = {};
     for (const [key, value] of formData.entries()) {
       if (key !== "profilePicture" && key !== "userId") updateData[key] = value;

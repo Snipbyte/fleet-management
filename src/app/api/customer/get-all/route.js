@@ -1,4 +1,3 @@
-// src/app/api/rider/get-all/route.js
 import { NextResponse } from "next/server";
 import { connect } from "../../../../../utils/db";
 import AppError from "../../../../../lib/errors/AppError";

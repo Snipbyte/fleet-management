@@ -1,49 +1,10 @@
 // src/services/rider/rider.js
 import bcrypt from "bcrypt";
 import User from "../../models/user";
-import Rider from "../../models/Rider.js";
+import Rider from "../../models/rider";
 import AppError from "../../lib/errors/AppError";
 import { deleteFileFromFirebase } from "../../utils/uploadFileToFirebase.js";
 
-// export async function createRider(data) {
-//   try {
-//     // Check duplicate email
-//     const existingUser = await User.findOne({ email: data.email });
-//     if (existingUser) {
-//       throw new AppError("Email already exists", 409);
-//     }
-
-//     // Hash password before saving (if provided)
-//     let hashedPassword = undefined;
-//     if (data.password) {
-//       hashedPassword = await bcrypt.hash(data.password, 10);
-//     }
-
-//     // Create User with type "rider"
-//     const user = await User.create({
-//       name: data.name,
-//       email: data.email,
-//       password: hashedPassword,
-//       phone: data.phone,
-//       address: data.address,
-//       type: "rider",
-//       profilePicture: data.profilePicture || "",
-//     });
-
-//     // No extra Rider model (like Driver) → just return User
-//     return { user };
-//   } catch (err) {
-//     console.error("Error in createRider:", err);
-//     if (err.code === 11000) {
-//       const field = Object.keys(err.keyPattern)[0];
-//       throw new AppError(`${field} already exists`, 409);
-//     }
-//     if (err instanceof AppError) throw err;
-//     throw new AppError("Failed to create rider", 500);
-//   }
-// }
-
-// src/services/rider/rider.js
 
 export async function createRider(data) {
   try {
@@ -85,33 +46,31 @@ export async function createRider(data) {
 }
 
 
-
-
 export async function updateRider(userId, updateData, newPictureUploaded = false) {
   try {
     const user = await User.findById(userId);
     if (!user) throw new AppError("User not found", 404);
+    if (user.type !== "rider") throw new AppError("User is not a rider", 400);
 
-    // Ensure only riders can be updated here
-    if (user.type !== "rider") {
-      throw new AppError("User is not a rider", 400);
-    }
-
-    // Try deleting old picture (non-blocking)
     if (newPictureUploaded && user.profilePicture) {
       deleteFileFromFirebase(user.profilePicture).catch((err) => {
         console.warn("Failed to delete old profile picture:", err.message);
       });
     }
 
-    // Update only provided fields
     Object.keys(updateData).forEach((key) => {
+      if (key === "address") return; // address belongs to Rider
       user[key] = updateData[key];
     });
 
     await user.save();
 
-    return user;
+    // Update Rider address if provided
+    if (updateData.address) {
+      await Rider.findOneAndUpdate({ userId }, { address: updateData.address });
+    }
+
+    return { user, rider: await Rider.findOne({ userId }) };
   } catch (err) {
     console.error("Error in updateRider:", err);
     if (err instanceof AppError) throw err;
@@ -119,41 +78,45 @@ export async function updateRider(userId, updateData, newPictureUploaded = false
   }
 }
 
-
-export async function deleteUser(userId) {
+export async function deleteRider(userId) {
   try {
     const user = await User.findById(userId);
     if (!user) throw new AppError("User not found", 404);
+    if (user.type !== "rider") throw new AppError("User is not a rider", 400);
 
-    // Try deleting profile picture from Firebase (non-blocking)
     if (user.profilePicture) {
       deleteFileFromFirebase(user.profilePicture).catch((err) => {
         console.warn("Failed to delete profile picture:", err.message);
       });
     }
 
+    await Rider.deleteOne({ userId });
     await user.deleteOne();
 
-    return { userId: user._id, type: user.type };
+    return { userId: user._id };
   } catch (err) {
-    console.error("Error in deleteUser:", err);
+    console.error("Error in deleteRider:", err);
     if (err instanceof AppError) throw err;
-    throw new AppError("Failed to delete user", 500);
+    throw new AppError("Failed to delete rider", 500);
   }
 }
+
 
 export async function getAllRiders(page = 1, limit = 10) {
   try {
     const skip = (page - 1) * limit;
 
-    // Fetch only riders (hide sensitive fields)
-    const riders = await User.find({ type: "rider" })
-      .select("-password -type -__v -createdAt -updatedAt") // hide these fields
+    // Fetch riders with User info + Rider info
+    const riders = await Rider.find()
       .skip(skip)
       .limit(limit)
-      .sort({ createdAt: -1 }); // latest first
+      .sort({ createdAt: -1 })
+      .populate({
+        path: "userId",
+        select: "-password -__v -createdAt -updatedAt -type", // hide sensitive
+      });
 
-    const total = await User.countDocuments({ type: "rider" });
+    const total = await Rider.countDocuments();
 
     return {
       total,
@@ -167,4 +130,3 @@ export async function getAllRiders(page = 1, limit = 10) {
     throw new AppError("Failed to fetch riders", 500);
   }
 }
-
