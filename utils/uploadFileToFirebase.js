@@ -56,3 +56,4 @@ export const uploadToFirebase = async (folderName, buffer, filename) => {
     throw new Error("File upload failed");
   }
 };
+
