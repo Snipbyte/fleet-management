@@ -1,36 +1,78 @@
 // src/services/rider/rider.js
 import bcrypt from "bcrypt";
 import User from "../../models/user";
+import Rider from "../../models/Rider.js";
 import AppError from "../../lib/errors/AppError";
 import { deleteFileFromFirebase } from "../../utils/uploadFileToFirebase.js";
+
+// export async function createRider(data) {
+//   try {
+//     // Check duplicate email
+//     const existingUser = await User.findOne({ email: data.email });
+//     if (existingUser) {
+//       throw new AppError("Email already exists", 409);
+//     }
+
+//     // Hash password before saving (if provided)
+//     let hashedPassword = undefined;
+//     if (data.password) {
+//       hashedPassword = await bcrypt.hash(data.password, 10);
+//     }
+
+//     // Create User with type "rider"
+//     const user = await User.create({
+//       name: data.name,
+//       email: data.email,
+//       password: hashedPassword,
+//       phone: data.phone,
+//       address: data.address,
+//       type: "rider",
+//       profilePicture: data.profilePicture || "",
+//     });
+
+//     // No extra Rider model (like Driver) → just return User
+//     return { user };
+//   } catch (err) {
+//     console.error("Error in createRider:", err);
+//     if (err.code === 11000) {
+//       const field = Object.keys(err.keyPattern)[0];
+//       throw new AppError(`${field} already exists`, 409);
+//     }
+//     if (err instanceof AppError) throw err;
+//     throw new AppError("Failed to create rider", 500);
+//   }
+// }
+
+// src/services/rider/rider.js
 
 export async function createRider(data) {
   try {
     // Check duplicate email
     const existingUser = await User.findOne({ email: data.email });
-    if (existingUser) {
-      throw new AppError("Email already exists", 409);
-    }
+    if (existingUser) throw new AppError("Email already exists", 409);
 
-    // Hash password before saving (if provided)
     let hashedPassword = undefined;
     if (data.password) {
       hashedPassword = await bcrypt.hash(data.password, 10);
     }
 
-    // Create User with type "rider"
+    // Create User
     const user = await User.create({
       name: data.name,
       email: data.email,
       password: hashedPassword,
       phone: data.phone,
-      address: data.address,
       type: "rider",
       profilePicture: data.profilePicture || "",
     });
 
-    // No extra Rider model (like Driver) → just return User
-    return { user };
+    // Create Rider record
+    const rider = await Rider.create({
+      userId: user._id,
+      address: data.address,
+    });
+
+    return { user, rider };
   } catch (err) {
     console.error("Error in createRider:", err);
     if (err.code === 11000) {
@@ -41,6 +83,7 @@ export async function createRider(data) {
     throw new AppError("Failed to create rider", 500);
   }
 }
+
 
 
 
