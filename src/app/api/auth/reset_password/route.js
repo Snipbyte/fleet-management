@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
-import { connect } from "../../../../utils/services";
+import { connect } from "../../../../../utils/db";
 import User from "../../../../../models/user";
-import { verifyForgotPasswordToken } from "../../../../utils/services";
+import { verifyForgotPasswordToken } from "../../../../../utils/jwt";
 import AppError from "../../../../../lib/errors/AppError";
 import { handleError } from "../../../../../lib/errors/handleError";
 
