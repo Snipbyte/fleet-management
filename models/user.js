@@ -22,7 +22,11 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      required: true,
+      required: false,
+    },
+    address:{
+      type:String,
+      required:false
     },
     googleId: {
       type: String,
