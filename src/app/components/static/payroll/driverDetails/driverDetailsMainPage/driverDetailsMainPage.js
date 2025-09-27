@@ -23,14 +23,10 @@ export default function DriverDetailsMainPage() {
   return (
     <div className="p-4">
       <AdminHeader title="Driver Details" showIcon={true} showButtons={false} />
-      {/* Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 mt-2">
-        {/* Driver Info - 30% */}
         <div className="lg:col-span-3">
           <DriverInfo driver={driver} />
         </div>
-
-        {/* Overview - 70% */}
         <div className="lg:col-span-7">
           <Tab options={options}>
             <Overview />

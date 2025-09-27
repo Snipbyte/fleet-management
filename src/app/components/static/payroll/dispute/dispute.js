@@ -5,23 +5,20 @@ import FilterBar from "../../../common/filterbar/filterbar";
 import Table from "../../../common/table/table";
 import CustomModal from "../../../common/modal/modal";
 import DisputeDetails from "../disputeDetails/disputeDetails";
+import { highlightText } from "../../../../../../utils/services";
 
-
-// ✅ Time Filters
 const timeFilters = [
- { label: "Last 30 Days", value: "last 30 days" },
+  { label: "Last 30 Days", value: "last 30 days" },
   { label: "Last 7 Days", value: "last 7 days" },
   { label: "All", value: "all" },
 ];
 
-// ✅ Status Filters (updated)
 const statuses = [
   { label: "All Status", value: "all" },
   { label: "Open", value: "open" },
   { label: "Resolved", value: "resolved" },
 ];
 
-// ✅ Dummy Table Data
 const tableData = [
   {
     no: 1,
@@ -49,22 +46,8 @@ const tableData = [
   },
 ];
 
-// ✅ Highlight Search Text
-function highlightText(text, query) {
-  if (!query) return text;
-  const regex = new RegExp(`(${query})`, "gi");
-  return text.split(regex).map((part, i) =>
-    regex.test(part) ? (
-      <span key={i} className="bg-yellow-200 font-medium">
-        {part}
-      </span>
-    ) : (
-      part
-    )
-  );
-}
 
-// ✅ Status Color Utility (covers all statuses)
+
 function getStatusColor(status) {
   switch (status.toLowerCase()) {
     case "resolved":
@@ -82,46 +65,6 @@ export default function Dispute() {
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [openDropdown, setOpenDropdown] = useState(null);
   const [selectedRow, setSelectedRow] = useState(null)
-
-  const filteredData = useMemo(() => {
-    return tableData.filter((row) => {
-
-      const driverNames = Array.isArray(row.assignedDriver)
-        ? row.assignedDriver.map((d) => d.name.toLowerCase())
-        : [String(row.assignedDriver || "").toLowerCase()];
-
-      const matchesSearch =
-        row.ticketId.toLowerCase().includes(search.toLowerCase()) ||
-        row.customerName.toLowerCase().includes(search.toLowerCase()) ||
-        driverNames.some((name) => name.includes(search.toLowerCase()));
-
-      const rowStatus = row.status.toLowerCase().replace(/\s+/g, "_");
-      const filterStatus = selectedStatus.toLowerCase();
-      const matchesStatus = filterStatus === "all" || rowStatus === filterStatus;
-
-      const rowDate = new Date(row.submitted);
-      const today = new Date();
-
-      let matchesTime = true;
-      if (selectedTime === "today") {
-        matchesTime =
-          rowDate.toDateString() === today.toDateString();
-      } else if (selectedTime === "this_week") {
-        const weekStart = new Date(today);
-        weekStart.setDate(today.getDate() - today.getDay());
-        const weekEnd = new Date(weekStart);
-        weekEnd.setDate(weekStart.getDate() + 6);
-        matchesTime = rowDate >= weekStart && rowDate <= weekEnd;
-      } else if (selectedTime === "this_month") {
-        matchesTime =
-          rowDate.getMonth() === today.getMonth() &&
-          rowDate.getFullYear() === today.getFullYear();
-      }
-
-      return matchesSearch && matchesStatus && matchesTime;
-    });
-  }, [search, selectedStatus, selectedTime]);
-
 
   //  table columns
   const columns = [

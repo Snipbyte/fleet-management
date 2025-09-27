@@ -7,9 +7,9 @@ import CustomModal from '../../../../common/modal/modal';
 import BookingDetail from '../../../../common/bookingDetails/bookingDetails';
 import { FaPlus } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-import { getStatusColor } from '../../../../../../utils/services';
 import Link from 'next/link';
 import DeleteTripModal from '../../../trips/deleteTripModal/deleteTripModal';
+import { getStatusColor, highlightText } from '../../../../../../../utils/services';
 
 const data = [
   {
@@ -160,7 +160,6 @@ const timeFilters = [
   { label: "This Month", value: "this_month" },
 ];
 
-// ✅ Status Filters (updated)
 const statuses = [
   { label: "All Status", value: "all" },
   { label: "Completed", value: "completed" },
@@ -190,18 +189,6 @@ export default function RecentTrip() {
     setFilteredData(results);
   };
 
-
-  const highlightText = (text, query) => {
-    if (!query) return text;
-    const regex = new RegExp(`(${query})`, "gi");
-    return text.split(regex).map((part, i) =>
-      regex.test(part) ? (
-        <span key={i} className="text-btnHover">{part}</span>
-      ) : (
-        part
-      )
-    );
-  };
 
 
   // Define columns
@@ -358,9 +345,7 @@ export default function RecentTrip() {
         isSuperAdmin={true}
         addBtn="Add Ride"
         icon={<FaPlus />}
-      // Pass booking detail modal directly
       />
-      {/* Booking Detail Modal */}
       <CustomModal
         isOpen={!!selectedRow}
         onRequestClose={() => setSelectedRow(null)}

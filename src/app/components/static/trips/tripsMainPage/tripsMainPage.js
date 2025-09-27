@@ -3,13 +3,11 @@ import React, { useEffect, useState } from 'react'
 import FilterBar from '../../../common/filterbar/filterbar'
 import Table from '../../../common/table/table'
 import { FaPlus } from 'react-icons/fa';
-import BookingDetail from '../../../common/bookingDetails/bookingDetails';
-import { getStatusColor } from '../../../../../utils/services';
-import CustomModal from '../../../common/modal/modal';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import DeleteTripModal from "../deleteTripModal/deleteTripModal"
 import AdminHeader from '../../../common/adminHeader/adminHeader';
+import { getStatusColor } from '../../../../../../utils/services';
 
 const data = [
   {
@@ -155,7 +153,7 @@ const data = [
 ];
 
 const timeFilters = [
-   { label: "Last 30 Days", value: "last 30 days" },
+  { label: "Last 30 Days", value: "last 30 days" },
   { label: "Last 7 Days", value: "last 7 days" },
   { label: "All", value: "all" },
 ];
@@ -365,19 +363,7 @@ export default function TripsMainPage() {
           isSuperAdmin={true}
           addBtn="Add Ride"
           icon={<FaPlus />}
-        // Pass booking detail modal directly
         />
-        {/* Booking Detail Modal */}
-        <CustomModal
-          isOpen={!!selectedRow}
-          onRequestClose={() => setSelectedRow(null)}
-          title="Booking Detail"
-        >
-          {selectedRow && (
-            <BookingDetail row={selectedRow} onClose={() => setSelectedRow(null)} />
-          )}
-
-        </CustomModal>
       </div>
       {deleteModalVisible && <DeleteTripModal onClose={() => setDeleteModalVisible(false)} />}
     </div>

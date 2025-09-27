@@ -18,8 +18,8 @@ export default function RouteParticipants({ pickup, dropoff, participants }) {
             key={idx}
             role={p.role}
             name={p.name}
-            onNotify={() => alert(`Notify ${p.name}`)}
-            onDetails={p.role === "Driver" ? () => alert(`Details of ${p.name}`) : null}
+          // onNotify={() => alert(`Notify ${p.name}`)}
+          // onDetails={p.role === "Driver" ? () => alert(`Details of ${p.name}`) : null}
           />
         ))}
       </div>

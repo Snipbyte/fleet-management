@@ -63,7 +63,7 @@ export default function PayrollMainPage() {
               </button>
             ))}
 
-            {/* Sliding background */}
+            {/* background */}
             <div
               className="absolute top-0 bottom-0 z-0 bg-btnHover rounded-md transition-all duration-300 ease-in-out"
               style={sliderStyle}

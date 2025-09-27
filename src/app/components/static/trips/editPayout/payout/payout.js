@@ -95,7 +95,6 @@ export default function Payout() {
         <Reimbursables data={formData} updateField={updateField} />
         <Deductions data={formData} updateField={updateField} />
         <Payment data={formData} updateField={updateField} />
-
         <TotalPayments totals={totals} />
       </div>
     </div>

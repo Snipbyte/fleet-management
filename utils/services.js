@@ -20,9 +20,6 @@ export const getStatusColor = (status) => {
   }
 };
 
-
-
-
 export const highlightText = (text, query) => {
   if (!query) return text;
   const regex = new RegExp(`(${query})`, "gi");
@@ -34,3 +31,4 @@ export const highlightText = (text, query) => {
     )
   );
 };
+

@@ -5,9 +5,8 @@ import Table from '../../../../common/table/table';
 import CustomModal from '../../../../common/modal/modal';
 import BookingDetail from '../../../../common/bookingDetails/bookingDetails';
 import { FaPlus } from 'react-icons/fa';
-
-import { getStatusColor } from '../../../../../../utils/services';
 import DeleteTripModal from '../../../trips/deleteTripModal/deleteTripModal';
+import { getStatusColor } from '../../../../../../../utils/services';
 
 const data = [
   {
@@ -54,7 +53,6 @@ const timeFilters = [
   { label: "This Month", value: "this_month" },
 ];
 
-// ✅ Status Filters (updated)
 const statuses = [
   { label: "All Status", value: "all" },
   { label: "Completed", value: "completed" },
@@ -119,7 +117,6 @@ export default function PayrollHistory() {
         isSuperAdmin={true}
         addBtn="Add Ride"
         icon={<FaPlus />}
-      // Pass booking detail modal directly
       />
       {/* Booking Detail Modal */}
       <CustomModal

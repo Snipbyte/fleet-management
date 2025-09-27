@@ -1,14 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { FiCalendar, FiClock } from "react-icons/fi";
 import Input from "../../common/input/input";
 import Dropdowns from "../../common/dropdowns/dropdowns"
 
 export default function NotificationSchedulerMainPage() {
-  const [title, setTitle] = useState("");
   const [customer, setCustomer] = useState("John Smith");
-  const [status, setStatus] = useState("Upcoming");
-  const [value, setValue] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [message, setMessage] = useState('');

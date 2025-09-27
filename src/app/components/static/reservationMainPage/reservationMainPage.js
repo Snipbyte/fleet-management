@@ -4,10 +4,10 @@ import FilterBar from '../../common/filterbar/filterbar'
 import Table from '../../common/table/table'
 import { FaPlus } from 'react-icons/fa';
 import BookingDetail from '../../common/bookingDetails/bookingDetails';
-import { getStatusColor } from '../../../../utils/services';
 import CustomModal from '../../common/modal/modal';
 import Link from 'next/link';
 import AdminHeader from '../../common/adminHeader/adminHeader';
+import { getStatusColor } from '../../../../../utils/services';
 
 const data = [
   {
@@ -229,7 +229,6 @@ const timeFilters = [
   { label: "All", value: "all" },
 ];
 
-// ✅ Status Filters (updated)
 const statuses = [
   { label: "All Status", value: "all" },
   { label: "Pending", value: "pending" },
@@ -237,6 +236,7 @@ const statuses = [
   { label: "Success", value: "success" },
   { label: "Rejected", value: "rejected" },
 ];
+
 const vehicles = [{ label: "Vehicle", value: "select" }, { label: "Car", value: "car" }, { label: "Bike", value: "bike" }, { label: "Truck", value: "truck" }, { label: "Bus", value: "bus" }];
 
 export default function ReservationMainPage() {

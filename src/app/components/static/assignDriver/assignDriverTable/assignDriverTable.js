@@ -4,8 +4,8 @@ import { FaUserPlus } from "react-icons/fa";
 import FilterBar from "../../../common/filterbar/filterbar";
 import Table from "../../../common/table/table";
 import CustomModal from "../../../common/modal/modal";
-import { getStatusColor } from "../../../../../utils/services";
 import AddDriver from "../addDriver/addDriver"
+import { getStatusColor } from "../../../../../../utils/services";
 
 const drivers = [
   {

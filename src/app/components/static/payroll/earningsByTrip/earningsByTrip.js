@@ -5,16 +5,15 @@ import FilterBar from "../../../common/filterbar/filterbar";
 import Table from "../../../common/table/table";
 import CustomModal from "../../../common/modal/modal";
 import TripInformationDialog from "../tripInformationDialog/tripInformationDialog";
+import { getStatusColor, highlightText } from "../../../../../../utils/services";
 
 
-// ✅ Time Filters
 const timeFilters = [
   { label: "Last 30 Days", value: "last 30 days" },
   { label: "Last 7 Days", value: "last 7 days" },
   { label: "All", value: "all" },
 ];
 
-// ✅ Status Filters (updated)
 const statuses = [
   { label: "All Status", value: "all" },
   { label: "Pending", value: "pending" },
@@ -25,7 +24,6 @@ const statuses = [
   { label: "Rejected", value: "rejected" },
 ];
 
-// ✅ Dummy Table Data
 const tableData = [
   {
     no: 1,
@@ -237,44 +235,6 @@ const tableData = [
   },
 ];
 
-// ✅ Highlight Search Text
-function highlightText(text, query) {
-  if (!query) return text;
-  const regex = new RegExp(`(${query})`, "gi");
-  return text.split(regex).map((part, i) =>
-    regex.test(part) ? (
-      <span key={i} className="bg-yellow-200 font-medium">
-        {part}
-      </span>
-    ) : (
-      part
-    )
-  );
-}
-
-// ✅ Status Color Utility (covers all statuses)
-function getStatusColor(status) {
-  switch (status.toLowerCase()) {
-    case "completed":
-    case "paid":
-    case "processed":
-    case "success":
-      return "bg-green-100 text-green-700";
-    case "pending":
-    case "unpaid":
-      return "bg-yellow-100 text-yellow-700";
-    case "approved":
-      return "bg-blue-100 text-blue-700";
-    case "in progress":
-      return "bg-orange-100 text-orange-700";
-    case "ongoing":
-      return "bg-purple-100 text-purple-700";
-    case "rejected":
-      return "bg-red-100 text-red-700";
-    default:
-      return "bg-gray-100 text-gray-700";
-  }
-}
 
 export default function EarningsByTrip() {
   const [search, setSearch] = useState("");
@@ -283,47 +243,6 @@ export default function EarningsByTrip() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [selectedRow, setSelectedRow] = useState(null)
 
-  const filteredData = useMemo(() => {
-    return tableData.filter((row) => {
-
-      const driverNames = Array.isArray(row.assignedDriver)
-        ? row.assignedDriver.map((d) => d.name.toLowerCase())
-        : [String(row.assignedDriver || "").toLowerCase()];
-
-      const matchesSearch =
-        row.tripid.toLowerCase().includes(search.toLowerCase()) ||
-        row.customerName.toLowerCase().includes(search.toLowerCase()) ||
-        driverNames.some((name) => name.includes(search.toLowerCase()));
-
-      const rowStatus = row.status.toLowerCase().replace(/\s+/g, "_");
-      const filterStatus = selectedStatus.toLowerCase();
-      const matchesStatus = filterStatus === "all" || rowStatus === filterStatus;
-
-      const rowDate = new Date(row.dateTime);
-      const today = new Date();
-
-      let matchesTime = true;
-      if (selectedTime === "today") {
-        matchesTime =
-          rowDate.toDateString() === today.toDateString();
-      } else if (selectedTime === "this_week") {
-        const weekStart = new Date(today);
-        weekStart.setDate(today.getDate() - today.getDay());
-        const weekEnd = new Date(weekStart);
-        weekEnd.setDate(weekStart.getDate() + 6);
-        matchesTime = rowDate >= weekStart && rowDate <= weekEnd;
-      } else if (selectedTime === "this_month") {
-        matchesTime =
-          rowDate.getMonth() === today.getMonth() &&
-          rowDate.getFullYear() === today.getFullYear();
-      }
-
-      return matchesSearch && matchesStatus && matchesTime;
-    });
-  }, [search, selectedStatus, selectedTime]);
-
-
-  //  table columns
   const columns = [
     { key: "no", header: "No." },
     { key: "tripid", header: "Trip ID" },
@@ -438,7 +357,7 @@ export default function EarningsByTrip() {
       />
 
       <Table
-        data={filteredData}
+        data={tableData}
         columns={columns}
         isRecent={false}
         isSuperAdmin={true}
